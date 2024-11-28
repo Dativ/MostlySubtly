@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://ndmu0puvaqt7"]
+
+[ext_resource type="PackedScene" uid="uid://dwg513q722ytm" path="res://assets/meshes/walls/Floor.glb" id="1_3063k"]
+[ext_resource type="PackedScene" uid="uid://dnjyxsrcnxp0l" path="res://assets/meshes/walls/Wall.glb" id="2_g4qdh"]
+[ext_resource type="PackedScene" uid="uid://dv14rn2l4b1fo" path="res://assets/meshes/walls/WallColumn1.glb" id="3_phs6n"]
+[ext_resource type="Material" uid="uid://b1p4wo6hiqrqk" path="res://assets/materials/Floor.tres" id="3_ydbc2"]
+[ext_resource type="PackedScene" uid="uid://6lvhp45nh1ix" path="res://assets/meshes/walls/WallColumn2.glb" id="4_kpjc4"]
+[ext_resource type="Material" uid="uid://djsdb5sr56wyd" path="res://assets/materials/wall.tres" id="4_w84ud"]
+[ext_resource type="PackedScene" uid="uid://d0iaxusrp7fcq" path="res://assets/meshes/walls/WallCorner.glb" id="5_ib3hx"]
+[ext_resource type="Material" uid="uid://dh72qiv4vvog7" path="res://assets/materials/black.tres" id="5_idewp"]
+[ext_resource type="PackedScene" uid="uid://cb7sano61hvyx" path="res://assets/meshes/walls/WallCorridor.glb" id="6_7u8ik"]
+[ext_resource type="Material" uid="uid://b6yaiuurdsdw3" path="res://assets/materials/rim.tres" id="6_q1i1w"]
+[ext_resource type="PackedScene" uid="uid://dhey20ok3eyvl" path="res://assets/meshes/walls/WallDeadEnd.glb" id="7_ttdir"]
+[ext_resource type="PackedScene" uid="uid://b46t8a1gkdqip" path="res://assets/meshes/walls/WallCornerwC1.glb" id="12_48nkb"]
+[ext_resource type="PackedScene" uid="uid://b1rd6474rl36a" path="res://assets/meshes/walls/WallwC1.glb" id="13_iq2wx"]
+[ext_resource type="PackedScene" uid="uid://crc453ynbkofy" path="res://assets/meshes/walls/WallwC1Mirror.glb" id="14_yns4r"]
+
+[node name="GridMapLibrary" type="Node3D"]
+
+[node name="Floor2" parent="." instance=ExtResource("1_3063k")]
+visible = false
+
+[node name="Floor" parent="Floor2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+
+[node name="Wall2" parent="." instance=ExtResource("2_g4qdh")]
+visible = false
+
+[node name="Wall" parent="Wall2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("4_w84ud")
+surface_material_override/2 = ExtResource("5_idewp")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallColumn12" parent="." instance=ExtResource("3_phs6n")]
+visible = false
+
+[node name="WallColumn1" parent="WallColumn12" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallColumn22" parent="." instance=ExtResource("4_kpjc4")]
+visible = false
+
+[node name="WallColumn2" parent="WallColumn22" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallCorner2" parent="." instance=ExtResource("5_ib3hx")]
+visible = false
+
+[node name="WallCorner" parent="WallCorner2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallCorridor2" parent="." instance=ExtResource("6_7u8ik")]
+visible = false
+
+[node name="WallCorridor" parent="WallCorridor2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallDeadEnd2" parent="." instance=ExtResource("7_ttdir")]
+visible = false
+
+[node name="WallDeadEnd" parent="WallDeadEnd2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallCornerwC12" parent="." instance=ExtResource("12_48nkb")]
+visible = false
+
+[node name="WallCornerwC1" parent="WallCornerwC12" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("5_idewp")
+surface_material_override/2 = ExtResource("4_w84ud")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallwC12" parent="." instance=ExtResource("13_iq2wx")]
+visible = false
+
+[node name="WallwC1" parent="WallwC12" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("4_w84ud")
+surface_material_override/2 = ExtResource("5_idewp")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[node name="WallwC1Mirror2" parent="." instance=ExtResource("14_yns4r")]
+
+[node name="WallwC1Mirror" parent="WallwC1Mirror2" index="0"]
+surface_material_override/0 = ExtResource("3_ydbc2")
+surface_material_override/1 = ExtResource("4_w84ud")
+surface_material_override/2 = ExtResource("5_idewp")
+surface_material_override/3 = ExtResource("6_q1i1w")
+
+[editable path="Floor2"]
+[editable path="Wall2"]
+[editable path="WallColumn12"]
+[editable path="WallColumn22"]
+[editable path="WallCorner2"]
+[editable path="WallCorridor2"]
+[editable path="WallDeadEnd2"]
+[editable path="WallCornerwC12"]
+[editable path="WallwC12"]
+[editable path="WallwC1Mirror2"]

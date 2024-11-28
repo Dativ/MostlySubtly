@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlebuh0hfh1c1"]
+
+[ext_resource type="Theme" uid="uid://cqcjtq2qlj7fd" path="res://game/UI/default_theme.tres" id="1_hauvf"]
+[ext_resource type="Script" path="res://game/UI/level_recap.gd" id="2_a0phk"]
+[ext_resource type="AudioStream" uid="uid://d2sljvep0dsac" path="res://assets/sfx/click.wav" id="3_rnf6d"]
+[ext_resource type="AudioStream" uid="uid://dwh7nfeybtgr3" path="res://assets/sfx/step.wav" id="4_5xp0b"]
+
+[node name="LevelRecap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hauvf")
+script = ExtResource("2_a0phk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RightLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]You guess was [color=green]right[/color].[/center]
+"
+fit_content = true
+
+[node name="WrongLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]You gues was [color=red]wrong[/color].
+[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="NextButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Next
+"
+
+[node name="FinishtButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Finish"
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+stream = ExtResource("3_rnf6d")
+volume_db = -20.0
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+stream = ExtResource("4_5xp0b")
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/FinishtButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/FinishtButton" to="." method="_on_finisht_button_pressed"]

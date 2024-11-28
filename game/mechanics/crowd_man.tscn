@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn5ethuvefovn"]
+
+[ext_resource type="Script" path="res://game/mechanics/crowd_man.gd" id="1_b5huh"]
+[ext_resource type="PackedScene" uid="uid://vxtrecoqcr76" path="res://assets/meshes/characters/character2.glb" id="1_wlwxe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jtth"]
+radius = 0.15
+height = 0.5
+
+[node name="CrowdMan" type="StaticBody3D"]
+script = ExtResource("1_b5huh")
+
+[node name="character2" parent="." instance=ExtResource("1_wlwxe")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="character2/Character2" index="0"]
+bones/3/rotation = Quaternion(0.0594115, -0.0685841, -0.829797, 0.550639)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.218023, 0.0608539, -0.0664862, 0.971773)
+bones/5/rotation = Quaternion(0.0594115, 0.0685841, 0.829797, 0.550639)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.218023, -0.0608539, 0.0664862, 0.971773)
+bones/7/rotation = Quaternion(0.876239, -2.14166e-07, -0.481877, -3.89438e-07)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.876239, 2.14166e-07, 0.481877, -3.89438e-07)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.876239, 7.2981e-14, -0.481877, -2.96862e-07)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.876239, -7.2981e-14, 0.481877, -2.96862e-07)
+bones/10/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="character2" index="1"]
+autoplay = "Idle2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249414, 0)
+shape = SubResource("CapsuleShape3D_3jtth")
+
+[editable path="character2"]

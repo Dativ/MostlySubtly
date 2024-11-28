@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b1p4wo6hiqrqk"]
+
+[ext_resource type="Shader" path="res://assets/materials/Floor.gdshader" id="1_55kyq"]
+
+[sub_resource type="Gradient" id="Gradient_4nifl"]
+offsets = PackedFloat32Array(0, 0.403023)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_spokp"]
+noise_type = 2
+frequency = 0.0124
+cellular_return_type = 6
+domain_warp_fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jeer3"]
+invert = true
+seamless = true
+color_ramp = SubResource("Gradient_4nifl")
+noise = SubResource("FastNoiseLite_spokp")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_55kyq")
+shader_parameter/strenght = 0.1
+shader_parameter/tile_scale = 45.0
+shader_parameter/grout_thickness = 0.03
+shader_parameter/tile_color = Color(0.529067, 0.529067, 0.529067, 1)
+shader_parameter/grout_color = Color(0, 0, 0, 1)
+shader_parameter/roughness = 0.5
+shader_parameter/diamond_size = 0.565
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_jeer3")

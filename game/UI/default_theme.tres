@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cqcjtq2qlj7fd"]
+
+[ext_resource type="StyleBox" uid="uid://mhvy5xecdxvf" path="res://game/UI/styles/main_menu_hover_button.tres" id="1_1qmws"]
+[ext_resource type="FontFile" uid="uid://cj3lq7tl8l4g0" path="res://assets/fonts/DynaPuff-Regular.ttf" id="1_aap8j"]
+[ext_resource type="StyleBox" uid="uid://blin5e757hq2r" path="res://game/UI/styles/main_menu_button.tres" id="2_7ana5"]
+[ext_resource type="StyleBox" uid="uid://beypye53vs6ol" path="res://game/UI/styles/main_menu_pressed_button.tres" id="3_1nfjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rtb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntc6s"]
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.273873, 0.273873, 0.273873, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_aap8j")
+Button/styles/focus = SubResource("StyleBoxEmpty_4rtb1")
+Button/styles/hover = ExtResource("1_1qmws")
+Button/styles/normal = ExtResource("2_7ana5")
+Button/styles/pressed = ExtResource("3_1nfjg")
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 32
+MarginContainer/constants/margin_bottom = 25
+MarginContainer/constants/margin_left = 25
+MarginContainer/constants/margin_right = 25
+MarginContainer/constants/margin_top = 25
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ntc6s")

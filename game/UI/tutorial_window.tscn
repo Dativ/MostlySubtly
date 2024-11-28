@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://cahyfeqhpilpa"]
+
+[ext_resource type="Theme" uid="uid://cqcjtq2qlj7fd" path="res://game/UI/default_theme.tres" id="1_ujfj7"]
+[ext_resource type="Script" path="res://game/UI/tutorial_window.gd" id="2_cw7aj"]
+[ext_resource type="Texture2D" uid="uid://bi2ahxen1mjp6" path="res://assets/2d/icons/ribbon.png" id="2_s22od"]
+[ext_resource type="AudioStream" uid="uid://d2sljvep0dsac" path="res://assets/sfx/click.wav" id="4_qf0ru"]
+[ext_resource type="AudioStream" uid="uid://dwh7nfeybtgr3" path="res://assets/sfx/step.wav" id="5_e28kt"]
+
+[node name="TutorialWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ujfj7")
+script = ExtResource("2_cw7aj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -150.0
+offset_right = 300.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_s22od")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mision: find and mark the target"
+
+[node name="Tutorial Text" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+- movement [WASD] / run [Shift] / mark target [Space]
+- avoid guards
+- gather info about target from the crowds
+- mark target
+- leave area"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="OkButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "OK
+"
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qf0ru")
+volume_db = -20.0
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_e28kt")
+
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/MarginContainer2/OkButton" to="." method="_on_ok_button_mouse_entered"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer2/OkButton" to="." method="_on_ok_button_pressed"]

@@ -1,0 +1,433 @@
+[gd_scene load_steps=38 format=3 uid="uid://dhqa305byr1bm"]
+
+[ext_resource type="MeshLibrary" uid="uid://cst8nej1wghdk" path="res://assets/meshes/walls/library/GridMapLibrary.tres" id="1_gaggp"]
+[ext_resource type="PackedScene" uid="uid://btychf625rrcr" path="res://game/player/player.tscn" id="2_sv1as"]
+[ext_resource type="PackedScene" uid="uid://tfevty1d1qxi" path="res://assets/Statics/bar.tscn" id="2_xjo0g"]
+[ext_resource type="PackedScene" uid="uid://b6t3e2gao16m7" path="res://assets/Statics/table_food.tscn" id="3_1mopq"]
+[ext_resource type="PackedScene" uid="uid://dfijmnej8r66m" path="res://game/mechanics/crowd.tscn" id="3_esqil"]
+[ext_resource type="PackedScene" uid="uid://cm8vud7frbb8s" path="res://assets/Statics/painting.tscn" id="4_2bviv"]
+[ext_resource type="Script" path="res://game/mechanics/points_of_interest.gd" id="4_6xw1e"]
+[ext_resource type="PackedScene" uid="uid://1kftvpi4ciq0" path="res://game/mechanics/point_of_interest.tscn" id="5_fg11k"]
+[ext_resource type="PackedScene" uid="uid://cx0nj8aphfvia" path="res://assets/Statics/table_drink.tscn" id="5_lo4kk"]
+[ext_resource type="PackedScene" uid="uid://cm8jyvdk50yi6" path="res://assets/meshes/items/Door.glb" id="6_5g2mm"]
+[ext_resource type="PackedScene" uid="uid://v5jvvh37j5d2" path="res://game/suspect/suspect.tscn" id="6_6jmx0"]
+[ext_resource type="Material" uid="uid://djsdb5sr56wyd" path="res://assets/materials/wall.tres" id="7_j6sxr"]
+[ext_resource type="Script" path="res://game/mechanics/game_manager.gd" id="7_nart0"]
+[ext_resource type="Material" uid="uid://b6yaiuurdsdw3" path="res://assets/materials/rim.tres" id="8_lwuml"]
+[ext_resource type="PackedScene" uid="uid://dl850rxcw8mm4" path="res://game/UI/gui.tscn" id="8_uxvcp"]
+[ext_resource type="Theme" uid="uid://cqcjtq2qlj7fd" path="res://game/UI/default_theme.tres" id="9_c1r0w"]
+[ext_resource type="PackedScene" uid="uid://cp4pl3mayl8b" path="res://game/guard/guard.tscn" id="11_1ef70"]
+[ext_resource type="Script" path="res://game/UI/ui.gd" id="11_53ovx"]
+[ext_resource type="PackedScene" uid="uid://b3kfi82mp3ik3" path="res://game/UI/settings.tscn" id="12_2ptjg"]
+[ext_resource type="PackedScene" uid="uid://bjmid2jd3vajv" path="res://game/mechanics/end_area.tscn" id="13_jqefv"]
+[ext_resource type="Texture2D" uid="uid://ou1hdyvnurop" path="res://assets/2d/icons/settings_icon.png" id="14_pcgsc"]
+[ext_resource type="PackedScene" uid="uid://cahyfeqhpilpa" path="res://game/UI/tutorial_window.tscn" id="17_0lfk0"]
+[ext_resource type="PackedScene" uid="uid://eb6cmwyss1cs" path="res://game/UI/spotted_screen.tscn" id="19_s0l4w"]
+[ext_resource type="PackedScene" uid="uid://bhr6v6g0i4kxp" path="res://game/UI/end_level_screen.tscn" id="20_hwrjw"]
+[ext_resource type="AudioStream" uid="uid://o6wom6rvqdre" path="res://assets/sfx/song1.wav" id="21_ftrxh"]
+[ext_resource type="AudioStream" uid="uid://d2sljvep0dsac" path="res://assets/sfx/click.wav" id="21_m42s8"]
+[ext_resource type="PackedScene" uid="uid://dlebuh0hfh1c1" path="res://game/UI/level_recap.tscn" id="21_pdqub"]
+[ext_resource type="AudioStream" uid="uid://dwh7nfeybtgr3" path="res://assets/sfx/step.wav" id="22_wlqta"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4l13d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.188235, 0.188235, 0.188235, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wfso6"]
+sky_material = SubResource("ProceduralSkyMaterial_4l13d")
+
+[sub_resource type="Environment" id="Environment_v23q8"]
+background_mode = 2
+sky = SubResource("Sky_wfso6")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pf2na"]
+vertices = PackedVector3Array(-1.5, 0.05, 4.5, -1.5, 0.05, 5.25, -0.75, 0.05, 5, 0.25, 0.05, 4.5, 2.75, 0.05, 9.25, 2, 0.05, 9.25, 1.75, 0.05, 9.5, 3.5, 0.05, 9.5, 3, 0.05, 8.25, 3.5, 0.05, 4.5, 1.75, 0.05, 2, 3.5, 0.05, 0.25, 3.5, 0.05, -1.5, 1.5, 0.05, -1.75, 0, 0.05, 0, 0, 0.05, 2, 3.5, 0.05, 1.75, 4, 0.05, 1.5, 4, 0.05, 0.5, 3.25, 0.05, 2, -0.5, 0.05, 6, 1.75, 0.05, 4.5, 0.5, 0.05, 3.75, 2, 0.05, -2.5, 1.5, 0.05, -3.75, 0.25, 0.05, -3.5, 0.5, 0.05, -2.25, 0.25, 0.05, -1.5, -1.5, 0.05, -1.5, -1.25, 0.05, 0, -1.25, 0.05, 2, -1.5, 0.05, 3.5, 1.75, 0.05, 3, 0, 0.05, -4.25, 1.5, 0.05, -4.25, 1.75, 0.05, -5.5, -1.5, 0.05, -5.5, 1.75, 0.05, 7.75, -1.5, 0.05, -2.5, 1.75, 0.05, 3.5, 3.5, 0.05, -2.5, 3.5, 0.05, -5.5, 4.5, 0.05, 1.75, 4.5, 0.05, 0.25, 6.5, 0.05, 3.75, 4.5, 0.05, 3.5, 6.5, 0.05, 7.5, 7.5, 0.05, 7.5, 7.5, 0.05, 3.75, 9.5, 0.05, 3.5, 9.5, 0.05, -1.5, 4.5, 0.05, -1.5, 2.75, 0.05, 3, 3.5, 0.05, 3.5, 1.25, 0.05, 8.5, -0.75, 0.05, 6.5, -1.5, 0.05, 9.5, -1.5, 0.05, 6.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 7, 8), PackedInt32Array(15, 14, 10), PackedInt32Array(10, 14, 11), PackedInt32Array(11, 14, 13), PackedInt32Array(11, 13, 12), PackedInt32Array(7, 4, 8), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 19, 18), PackedInt32Array(18, 19, 11), PackedInt32Array(11, 19, 10), PackedInt32Array(2, 3, 20), PackedInt32Array(20, 3, 21), PackedInt32Array(3, 22, 21), PackedInt32Array(13, 26, 23), PackedInt32Array(23, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(14, 29, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(30, 31, 29), PackedInt32Array(29, 31, 28), PackedInt32Array(15, 10, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(37, 20, 8), PackedInt32Array(8, 20, 21), PackedInt32Array(8, 21, 9), PackedInt32Array(25, 26, 33), PackedInt32Array(33, 26, 38), PackedInt32Array(33, 38, 36), PackedInt32Array(30, 15, 31), PackedInt32Array(31, 15, 22), PackedInt32Array(15, 32, 39), PackedInt32Array(21, 22, 39), PackedInt32Array(39, 22, 15), PackedInt32Array(26, 13, 27), PackedInt32Array(27, 13, 14), PackedInt32Array(34, 35, 24), PackedInt32Array(24, 35, 23), PackedInt32Array(23, 35, 40), PackedInt32Array(40, 35, 41), PackedInt32Array(18, 42, 17), PackedInt32Array(18, 43, 42), PackedInt32Array(42, 43, 44), PackedInt32Array(44, 45, 42), PackedInt32Array(48, 47, 44), PackedInt32Array(44, 47, 46), PackedInt32Array(48, 44, 49), PackedInt32Array(49, 44, 43), PackedInt32Array(49, 43, 51), PackedInt32Array(49, 51, 50), PackedInt32Array(32, 52, 39), PackedInt32Array(39, 52, 53), PackedInt32Array(19, 16, 52), PackedInt32Array(52, 16, 53), PackedInt32Array(54, 5, 6), PackedInt32Array(20, 37, 55), PackedInt32Array(55, 37, 54), PackedInt32Array(57, 55, 56), PackedInt32Array(56, 55, 54), PackedInt32Array(56, 54, 6)]
+cell_height = 0.05
+agent_radius = 0.25
+agent_max_climb = 0.1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2qdru"]
+viewport_path = NodePath("NavigationRegion3D/Staticts/Doors/Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1hd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm65r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4auh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11j0u"]
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v23q8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.05
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pf2na")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_gaggp")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 0, 1, 0, 0, 0, 0, 65535, 3, 65535, 65535, 4, 1, 65535, 1441796, 1, 0, 1441795, 65535, 1, 1048580, 0, 1, 655363, 1, 1, 655364, 65535, 65534, 1048580, 65535, 65533, 4, 1, 65533, 1441796, 1, 65534, 655364, 3, 3, 655366, 3, 2, 655365, 2, 1, 1048580, 4, 1, 655364, 4, 0, 655361, 1, 2, 1441796, 1, 4, 655364, 65535, 4, 1048580, 65535, 2, 4, 65535, 3, 1, 1, 3, 655361, 0, 4, 1048577, 0, 65533, 1441793, 3, 0, 655360, 2, 0, 1048579, 3, 1, 655363, 0, 65534, 655363, 0, 2, 3, 0, 3, 655360, 2, 65535, 4, 4, 65535, 1441796, 3, 65535, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Staticts" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Bar" parent="NavigationRegion3D/Staticts" instance=ExtResource("2_xjo0g")]
+
+[node name="Paintings" type="Node3D" parent="NavigationRegion3D/Staticts"]
+
+[node name="Painting" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4215, 0.551, -5.896)
+
+[node name="Painting2" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221496, 0.551, -5.896)
+
+[node name="Painting3" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978504, 0.551, -5.896)
+
+[node name="Painting6" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.8782, 0.551, -2.696)
+
+[node name="Painting7" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.8782, 0.551, -3.896)
+
+[node name="Painting8" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.8782, 0.551, -5.096)
+
+[node name="Painting9" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87695, 0.551, -5.096)
+
+[node name="Painting10" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87695, 0.551, -3.896)
+
+[node name="Painting11" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87695, 0.551, -2.696)
+
+[node name="Painting4" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1785, 0.551, -5.896)
+
+[node name="Painting5" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3785, 0.551, -5.896)
+
+[node name="Painting12" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.41539, 0.551, 9.89654)
+
+[node name="Painting13" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.21539, 0.551, 9.89654)
+
+[node name="Painting14" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.01539, 0.551, 9.89654)
+
+[node name="Painting15" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87209, 0.551, 6.69654)
+
+[node name="Painting24" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.872, 0.551, 5.5)
+
+[node name="Painting16" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87209, 0.551, 7.89654)
+
+[node name="Painting17" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.87209, 0.551, 9.09654)
+
+[node name="Painting18" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.88305, 0.551, 9.09654)
+
+[node name="Painting19" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.88305, 0.551, 7.89654)
+
+[node name="Painting20" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.88305, 0.551, 6.69654)
+
+[node name="Painting23" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.883, 0.551, 5.5)
+
+[node name="Painting21" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.184607, 0.551, 9.89654)
+
+[node name="Painting22" parent="NavigationRegion3D/Staticts/Paintings" instance=ExtResource("4_2bviv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.38461, 0.551, 9.89654)
+
+[node name="TablesFood" type="Node3D" parent="NavigationRegion3D/Staticts"]
+
+[node name="TableFood" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09056, 0, 2.49951)
+
+[node name="TableFood2" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49249, 0, 2.49951)
+
+[node name="TableFood3" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49249, 0, 8.60776)
+
+[node name="TableFood4" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11706, 0, 8.60776)
+
+[node name="TableFood5" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.926302, 0, 6.07839)
+
+[node name="TableFood6" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("3_1mopq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01094, 0, -4.0541)
+
+[node name="TableDrink" type="Node3D" parent="NavigationRegion3D/Staticts"]
+
+[node name="Table" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_lo4kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.628965, 0, -4.05233)
+
+[node name="Table2" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_lo4kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80299, 0, 2.18322)
+
+[node name="Table3" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_lo4kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87317, 0, 8.25178)
+
+[node name="Table4" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_lo4kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.959769, 0, 5.64536)
+
+[node name="Doors" type="Node3D" parent="NavigationRegion3D/Staticts"]
+
+[node name="Door" parent="NavigationRegion3D/Staticts/Doors" instance=ExtResource("6_5g2mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7.9)
+
+[node name="Door" parent="NavigationRegion3D/Staticts/Doors/Door" index="0"]
+surface_material_override/0 = ExtResource("7_j6sxr")
+
+[node name="DoorFrame" parent="NavigationRegion3D/Staticts/Doors/Door/Door" index="0"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="DoorKnob" parent="NavigationRegion3D/Staticts/Doors/Door/Door" index="1"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="Door2" parent="NavigationRegion3D/Staticts/Doors" instance=ExtResource("6_5g2mm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.6, 0, -1.9)
+
+[node name="Door" parent="NavigationRegion3D/Staticts/Doors/Door2" index="0"]
+surface_material_override/0 = ExtResource("7_j6sxr")
+
+[node name="DoorFrame" parent="NavigationRegion3D/Staticts/Doors/Door2/Door" index="0"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="DoorKnob" parent="NavigationRegion3D/Staticts/Doors/Door2/Door" index="1"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="Door3" parent="NavigationRegion3D/Staticts/Doors" instance=ExtResource("6_5g2mm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.5, 0, -1.9)
+
+[node name="Door" parent="NavigationRegion3D/Staticts/Doors/Door3" index="0"]
+surface_material_override/0 = ExtResource("7_j6sxr")
+
+[node name="DoorFrame" parent="NavigationRegion3D/Staticts/Doors/Door3/Door" index="0"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="DoorKnob" parent="NavigationRegion3D/Staticts/Doors/Door3/Door" index="1"]
+surface_material_override/0 = ExtResource("8_lwuml")
+
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Staticts/Doors"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.01901, 0.01, 7.29462)
+modulate = Color(0.380392, 0, 0, 1)
+texture = SubResource("ViewportTexture_2qdru")
+
+[node name="SubViewport" type="SubViewport" parent="NavigationRegion3D/Staticts/Doors/Sprite3D"]
+transparent_bg = true
+size = Vector2i(175, 40)
+
+[node name="Label" type="Label" parent="NavigationRegion3D/Staticts/Doors/Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_c1r0w")
+text = "Entry/Exit"
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_sv1as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9066, 0, 7.16018)
+
+[node name="PointsOfInterest" type="Node3D" parent="." groups=["PointsOfInterest"]]
+script = ExtResource("4_6xw1e")
+
+[node name="Bar" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266365, 0, 1.53212)
+
+[node name="Crowd" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490917, 0, 6.88041)
+type = 1
+
+[node name="Painting" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56243, 0, -3.88317)
+type = 3
+
+[node name="Painting2" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.970102, 0, -5.54972)
+type = 3
+
+[node name="Painting3" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59067, 0, -3.95321)
+type = 3
+
+[node name="Painting4" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59067, 0, 6.7364)
+type = 3
+
+[node name="Painting5" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.224515, 0, 9.58677)
+type = 3
+
+[node name="Painting6" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24873, 0, 9.58677)
+type = 3
+
+[node name="Painting7" parent="PointsOfInterest" instance=ExtResource("5_fg11k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56413, 0, 6.73417)
+type = 3
+
+[node name="Suspects" type="Node3D" parent="."]
+
+[node name="Subject" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94027, 0, -4.58738)
+
+[node name="Subject2" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241044, 0, 0.725094)
+
+[node name="Subject3" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02103, 0, 4.87469)
+
+[node name="Subject4" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27078, 0, 8.06073)
+
+[node name="Subject5" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25948, 0, 1.02764)
+
+[node name="Subject6" parent="Suspects" instance=ExtResource("6_6jmx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11686, 0, 3.23046)
+
+[node name="Crowds" type="Node3D" parent="."]
+
+[node name="Crowd" parent="Crowds" instance=ExtResource("3_esqil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60201, 0, -0.666847)
+
+[node name="Crowd2" parent="Crowds" instance=ExtResource("3_esqil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60201, 0, 5.23017)
+clue_index = 1
+
+[node name="Crowd3" parent="Crowds" instance=ExtResource("3_esqil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0392246, 0, 7.41376)
+clue_index = 2
+
+[node name="Crowd4" parent="Crowds" instance=ExtResource("3_esqil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418412, 0, -4.31489)
+clue_index = 3
+
+[node name="Crowd5" parent="Crowds" instance=ExtResource("3_esqil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69354, 0, -3.02042)
+clue_index = 4
+
+[node name="Guards" type="Node3D" parent="."]
+
+[node name="Guard" parent="Guards" instance=ExtResource("11_1ef70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.805203, 0, 0)
+
+[node name="Guard2" parent="Guards" instance=ExtResource("11_1ef70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.614036, 0, 4.86333)
+
+[node name="Guard3" parent="Guards" instance=ExtResource("11_1ef70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.861757, 0, -3.37015)
+
+[node name="Others" type="Node3D" parent="."]
+
+[node name="EndArea" parent="Others" node_paths=PackedStringArray("level_recap") instance=ExtResource("13_jqefv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 0.245333, 7.25068)
+level_recap = NodePath("../../UI/LevelRecap")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("suspects_slot", "crowds_slot", "guards_slot", "gui", "spotted_screen", "player", "end_area")]
+script = ExtResource("7_nart0")
+suspects_slot = NodePath("../Suspects")
+crowds_slot = NodePath("../Crowds")
+guards_slot = NodePath("../Guards")
+gui = NodePath("../UI/ClueGui")
+spotted_screen = NodePath("../UI/SpottedScreen")
+player = NodePath("../Player")
+end_area = NodePath("../Others/EndArea")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_53ovx")
+
+[node name="ClueGui" parent="UI" instance=ExtResource("8_uxvcp")]
+layout_mode = 1
+
+[node name="SettingButton" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="UI/SettingButton"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g1hd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jm65r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e4auh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_11j0u")
+icon = ExtResource("14_pcgsc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="UI/SettingButton/Button"]
+stream = ExtResource("21_m42s8")
+volume_db = -20.0
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="UI/SettingButton/Button"]
+stream = ExtResource("22_wlqta")
+
+[node name="Settings" parent="UI" instance=ExtResource("12_2ptjg")]
+visible = false
+layout_mode = 1
+
+[node name="TutorialWindow" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("17_0lfk0")]
+layout_mode = 1
+player = NodePath("../../Player")
+
+[node name="SpottedScreen" parent="UI" instance=ExtResource("19_s0l4w")]
+visible = false
+layout_mode = 1
+
+[node name="EndLevelScreen" parent="UI" instance=ExtResource("20_hwrjw")]
+layout_mode = 1
+
+[node name="LevelRecap" parent="UI" node_paths=PackedStringArray("game_manager") instance=ExtResource("21_pdqub")]
+visible = false
+layout_mode = 1
+game_manager = NodePath("../../GameManager")
+
+[node name="BackgroundMusic" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundMusic"]
+stream = ExtResource("21_ftrxh")
+autoplay = true
+bus = &"Music"
+
+[connection signal="mouse_entered" from="UI/SettingButton/Button" to="UI" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="UI/SettingButton/Button" to="UI" method="_on_button_pressed"]
+
+[editable path="NavigationRegion3D/Staticts/Doors/Door"]
+[editable path="NavigationRegion3D/Staticts/Doors/Door2"]
+[editable path="NavigationRegion3D/Staticts/Doors/Door3"]

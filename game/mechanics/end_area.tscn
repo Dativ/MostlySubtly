@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjmid2jd3vajv"]
+
+[ext_resource type="Script" path="res://game/mechanics/end_area.gd" id="1_fhr0p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftjre"]
+
+[node name="EndArea" type="Area3D"]
+script = ExtResource("1_fhr0p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ftjre")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

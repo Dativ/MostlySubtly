@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1kftvpi4ciq0"]
+
+[ext_resource type="Script" path="res://game/mechanics/point_of_interest.gd" id="1_kl0sg"]
+
+[node name="Point" type="Node3D"]
+script = ExtResource("1_kl0sg")

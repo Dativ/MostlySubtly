@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://cp4pl3mayl8b"]
+
+[ext_resource type="PackedScene" uid="uid://if6kp3tof0qe" path="res://game/suspect/npc.tscn" id="1_iy4eq"]
+[ext_resource type="Script" path="res://game/guard/guard.gd" id="2_e48ln"]
+[ext_resource type="Script" path="res://game/suspect/States/wander.gd" id="2_ek1dl"]
+[ext_resource type="Script" path="res://game/suspect/States/idle.gd" id="3_0pr2a"]
+[ext_resource type="Texture2D" uid="uid://bi4leiyrw6jy4" path="res://assets/2d/sprites/guard_vision.png" id="3_qcefv"]
+[ext_resource type="PackedScene" uid="uid://dnrvcas0osdcu" path="res://assets/meshes/cloths/Hat3.glb" id="3_ueax3"]
+[ext_resource type="AudioStream" uid="uid://dp7y3gsdlbi3k" path="res://assets/sfx/hej.wav" id="7_j0evm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcjet"]
+albedo_color = Color(0.396078, 0.0823529, 0.0823529, 1)
+
+[node name="Guard" instance=ExtResource("1_iy4eq")]
+script = ExtResource("2_e48ln")
+
+[node name="Skeleton3D" parent="model/Character2" index="0"]
+bones/0/rotation = Quaternion(0.0103548, -0.175419, 0.0577545, 0.982744)
+bones/3/rotation = Quaternion(0.0835377, 0.000258558, -0.821275, 0.564383)
+bones/4/rotation = Quaternion(0.0559168, 0.106121, -0.110984, 0.986557)
+bones/5/rotation = Quaternion(0.0232213, 0.144894, 0.801225, 0.580091)
+bones/6/rotation = Quaternion(0.311275, 0.0135126, 0.169059, 0.935064)
+bones/7/rotation = Quaternion(0.869122, -0.0126935, -0.477963, -0.126561)
+bones/8/rotation = Quaternion(0.863708, 0.0556253, 0.474985, 0.159068)
+
+[node name="HatSlot" parent="model/Character2/Skeleton3D" index="1"]
+transform = Transform3D(0.931785, -0.117149, -0.343588, 0.109883, 0.993114, -0.0406147, 0.34598, 8.97609e-05, 0.938242, -0.189003, 2.10766, 0.000144816)
+
+[node name="Hat32" parent="model/Character2/Skeleton3D/HatSlot" index="0" instance=ExtResource("3_ueax3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.56558, 0)
+
+[node name="Hat3" parent="model/Character2/Skeleton3D/HatSlot/Hat32" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qcjet")
+
+[node name="MaskSlot" parent="model/Character2/Skeleton3D" index="2"]
+transform = Transform3D(0.931785, -0.117149, -0.343588, 0.109883, 0.993114, -0.0406147, 0.34598, 8.97609e-05, 0.938242, -0.189003, 2.10766, 0.000144816)
+
+[node name="BeltSlot" parent="model/Character2/Skeleton3D" index="3"]
+transform = Transform3D(0.931785, -0.117149, -0.343588, 0.109883, 0.993114, -0.0406147, 0.34598, 8.97609e-05, 0.938242, 0, 0.505408, 0)
+
+[node name="LeftBootSlot" parent="model/Character2/Skeleton3D" index="4"]
+transform = Transform3D(0.780729, 0.0514866, -0.622745, 0.191754, -0.968256, 0.160347, -0.594721, -0.244601, -0.765818, 0.474121, 0.579755, 0.176843)
+
+[node name="RightBootSlot" parent="model/Character2/Skeleton3D" index="5"]
+transform = Transform3D(0.200786, -0.0533392, 0.978182, 0.272512, -0.956064, -0.10807, 0.940969, 0.288265, -0.177428, -0.478411, 0.467426, -0.17684)
+
+[node name="LeftGloveSlot" parent="model/Character2/Skeleton3D" index="6"]
+transform = Transform3D(-0.241412, 0.768498, -0.592562, -0.820977, -0.487312, -0.297529, -0.517413, 0.414653, 0.748563, 0.938496, 1.64051, 0.436181)
+
+[node name="RightGloveSlot" parent="model/Character2/Skeleton3D" index="7"]
+transform = Transform3D(-0.657275, -0.667176, 0.350522, 0.734417, -0.462607, 0.496615, -0.169175, 0.583842, 0.794045, -1.23168, 1.4186, -0.291811)
+
+[node name="Wander" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("2_ek1dl")
+
+[node name="Idle" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("3_0pr2a")
+
+[node name="VisionSprite" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.01, 0.873)
+modulate = Color(0.431373, 0, 0, 0.647059)
+texture = ExtResource("3_qcefv")
+
+[node name="VisioanArea" type="Area3D" parent="." index="5"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="VisioanArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array(0.795143, -1.66029, 0.00821431, -1.83892, -0.83182, -1.67477, -0.320075, -0.105744, -0.238003, 0.208062, 0.01787, 0.25634, 0.225465, 0.203234, 0.331676, -0.0719498)
+
+[node name="HejSound" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("7_j0evm")
+bus = &"SFX"
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283037, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent" to="StateMachine/Wander" method="_on_nav_velocity_computed"]
+[connection signal="body_entered" from="VisioanArea" to="." method="_on_visioan_area_player_entered"]
+[connection signal="body_exited" from="VisioanArea" to="." method="_on_visioan_area_body_exited"]
+
+[editable path="model"]
+[editable path="model/Character2/Skeleton3D/HatSlot/Hat32"]

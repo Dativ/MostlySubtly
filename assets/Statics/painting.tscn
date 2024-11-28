@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm8vud7frbb8s"]
+
+[ext_resource type="PackedScene" uid="uid://bwbfjex1rbh5n" path="res://assets/meshes/items/Painting.glb" id="1_8j3hj"]
+[ext_resource type="Script" path="res://assets/Statics/painting.gd" id="1_awbhr"]
+[ext_resource type="Texture2D" uid="uid://c2ti3c8md4v3u" path="res://icon.svg" id="2_rqqmu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vputq"]
+albedo_color = Color(0.437253, 0.15166, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_i7htf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elwul"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_rqqmu")
+
+[node name="Painting" type="Node3D"]
+script = ExtResource("1_awbhr")
+
+[node name="Painting2" parent="." instance=ExtResource("1_8j3hj")]
+
+[node name="Painting" parent="Painting2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vputq")
+
+[node name="Painting" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.226476, 0, 0, 0, 0.187269, 0, 0, 0, 1, 0, 0, 0.00439431)
+mesh = SubResource("QuadMesh_i7htf")
+surface_material_override/0 = SubResource("StandardMaterial3D_elwul")
+
+[editable path="Painting2"]

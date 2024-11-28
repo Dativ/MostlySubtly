@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://if6kp3tof0qe"]
+
+[ext_resource type="Script" path="res://game/suspect/npc.gd" id="1_4awh2"]
+[ext_resource type="PackedScene" uid="uid://vxtrecoqcr76" path="res://assets/meshes/characters/character2.glb" id="2_hjyf8"]
+[ext_resource type="Script" path="res://game/suspect/state_machine.gd" id="13_bb25y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o60gm"]
+radius = 0.15
+height = 0.5
+
+[node name="Npc" type="CharacterBody3D"]
+script = ExtResource("1_4awh2")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249414, 0)
+shape = SubResource("CapsuleShape3D_o60gm")
+
+[node name="model" parent="." instance=ExtResource("2_hjyf8")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="model/Character2" index="0"]
+bones/3/rotation = Quaternion(0.0454282, -0.078548, -0.918669, 0.384466)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.237465, -0.10391, -0.43742, 0.861091)
+bones/5/rotation = Quaternion(0.0429055, 0.0799539, 0.930439, 0.355036)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.237488, 0.0942632, 0.416751, 0.872372)
+bones/7/rotation = Quaternion(0.876239, 1.42109e-14, -0.481876, -1.64148e-13)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.876239, -1.42109e-14, 0.481876, -1.64148e-13)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0.511132, -0.119084, 6.12939e-08)
+bones/9/rotation = Quaternion(0.876239, 7.78296e-14, -0.481876, -2.96862e-07)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-0.511132, -0.119084, 6.12939e-08)
+bones/10/rotation = Quaternion(0.876239, -7.78296e-14, 0.481876, -2.96862e-07)
+bones/10/scale = Vector3(1, 1, 1)
+
+[node name="HatSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11877, 0)
+bone_name = "Head"
+bone_idx = 2
+
+[node name="MaskSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11877, 0)
+bone_name = "Head"
+bone_idx = 2
+
+[node name="BeltSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505408, 0)
+visible = false
+bone_name = "Body"
+bone_idx = 0
+
+[node name="LeftBootSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="4"]
+transform = Transform3D(0.535591, -1.33294e-13, -0.844478, 1.83102e-13, -1, 2.7397e-13, -0.844478, -3.01362e-13, -0.535591, 0.511132, 0.523716, 4.53133e-08)
+bone_name = "Leg.L"
+bone_idx = 7
+
+[node name="RightBootSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="5"]
+transform = Transform3D(0.535591, 1.33294e-13, 0.844478, -1.83102e-13, -1, 2.7397e-13, 0.844478, -3.01362e-13, -0.535591, -0.511132, 0.523716, 4.53133e-08)
+bone_name = "Leg.R"
+bone_idx = 8
+
+[node name="LeftGloveSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="6"]
+transform = Transform3D(-0.974287, -0.212052, -0.0761528, 0.127248, -0.796786, 0.590711, -0.185939, 0.565832, 0.803282, 1.05137, 1.38016, 0.077692)
+bone_name = "Arm2.L"
+bone_idx = 4
+
+[node name="RightGloveSlot" type="BoneAttachment3D" parent="model/Character2/Skeleton3D" index="7"]
+transform = Transform3D(-0.972584, 0.222204, 0.068607, -0.139672, -0.794015, 0.591635, 0.185939, 0.565832, 0.803282, -1.03168, 1.36148, 0.077692)
+bone_name = "Arm2.R"
+bone_idx = 6
+
+[node name="AnimationPlayer" parent="model" index="1"]
+autoplay = "Idle2"
+
+[node name="NavigationAgent" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 0.25
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("13_bb25y")
+
+[editable path="model"]

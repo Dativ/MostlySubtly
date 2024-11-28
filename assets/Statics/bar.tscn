@@ -1,0 +1,840 @@
+[gd_scene load_steps=13 format=4 uid="uid://tfevty1d1qxi"]
+
+[ext_resource type="PackedScene" uid="uid://d2el2phma02jb" path="res://assets/meshes/items/Bar.glb" id="1_wxmnf"]
+[ext_resource type="PackedScene" uid="uid://d00w1gmnw7jj0" path="res://assets/meshes/items/Bottle.glb" id="2_ttu7u"]
+[ext_resource type="Material" uid="uid://dd55kndxy13a6" path="res://assets/materials/bottle_glass.tres" id="3_ra2u4"]
+[ext_resource type="Material" uid="uid://cgye4on81pxou" path="res://assets/materials/bottle_top.tres" id="4_55sem"]
+[ext_resource type="Material" uid="uid://58in7migtsnx" path="res://assets/materials/bottle_midle.tres" id="5_qy5w5"]
+[ext_resource type="PackedScene" uid="uid://s80gbj0wvs7m" path="res://assets/meshes/items/MartiniGlass.glb" id="6_g6dvh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oile2"]
+size = Vector3(1.77246, 0.359131, 0.362305)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qryt2"]
+albedo_color = Color(0.917352, 0.917844, 0.906214, 1)
+metallic = 0.9
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wb7u"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4k41"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x4ojm"]
+_surfaces = [{
+"aabb": AABB(-0.053531, -0.000324633, -0.053531, 0.107062, 0.121851, 0.107062),
+"format": 34359742465,
+"index_count": 852,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUABAAHAAUABAAGAAcABgAJAAcABgAIAAkACAALAAkACAAKAAsACgANAAsACgAMAA0ADAAPAA0ADAAOAA8ADgARAA8ADgAQABEAEAATABEAEAASABMAEgAVABMAEgAUABUAFAAXABUAFAAWABcAFgAZABcAFgAYABkAGAAbABkAGAAaABsAGgAdABsAGgAcAB0AagAtAGcAagAuAC0AHAAfAB0AHAAeAB8AHgABAB8AHgAAAAEAHgACAAAAAgAGAAQABgAKAAgACgAOAAwADgASABAAEgAWABQAFgAaABgAGgAeABwAHgAGAAIABgAOAAoADgAWABIAFgAeABoAHgAOAAYADgAeABYAVQAmAFIAVQAnACYAQQAvAG0AQQAgAC8AUgAlAE8AUgAmACUAZAArAGEAZAAsACsARgAhAEMARgAiACEATwAkAEwATwAlACQAXgApAFsAXgAqACkAbQAuAGoAbQAvAC4ASQAiAEYASQAjACIAWAAnAFUAWAAoACcAZwAsAGQAZwAtACwADQBQAAsADQBTAFAAYQAqAF4AYQArACoATAAjAEkATAAkACMAWwAoAFgAWwApACgAKwB6ACoAKwB7AHoAHQBoABsAHQBrAGgADwBTAA0ADwBWAFMAHwBrAB0AHwBuAGsAEQBWAA8AEQBZAFYAAwBAAAEAAwBEAEAAAQBuAB8AAQBAAG4AEwBZABEAEwBcAFkABQBEAAMABQBHAEQAFQBcABMAFQBfAFwABwBHAAUABwBKAEcAFwBfABUAFwBiAF8ACQBKAAcACQBNAEoAGQBiABcAGQBlAGIACwBNAAkACwBQAE0AGwBlABkAGwBoAGUAOgCJADkAOgCKAIkAJABzACMAJAB0AHMALAB7ACsALAB8AHsAJQB0ACQAJQB1AHQALQB8ACwALQB9AHwAJgB1ACUAJgB2AHUALgB9AC0ALgB+AH0AJwB2ACYAJwB3AHYALwB+AC4ALwB/AH4AKAB3ACcAKAB4AHcAIQBxACAAIQBwAHEAIAB/AC8AIABxAH8AKQB4ACgAKQB5AHgAIgBwACEAIgByAHAAKgB5ACkAKgB6AHkAIwByACIAIwBzAHIARABCAEAARABFAEIARQBBAEIARQBDAEEARwBFAEQARwBIAEUASABDAEUASABGAEMASgBIAEcASgBLAEgASwBGAEgASwBJAEYATQBLAEoATQBOAEsATgBJAEsATgBMAEkAUABOAE0AUABRAE4AUQBMAE4AUQBPAEwAUwBRAFAAUwBUAFEAVABPAFEAVABSAE8AVgBUAFMAVgBXAFQAVwBSAFQAVwBVAFIAWQBXAFYAWQBaAFcAWgBVAFcAWgBYAFUAXABaAFkAXABdAFoAXQBYAFoAXQBbAFgAXwBdAFwAXwBgAF0AYABbAF0AYABeAFsAYgBgAF8AYgBjAGAAYwBeAGAAYwBhAF4AZQBjAGIAZQBmAGMAZgBhAGMAZgBkAGEAaABmAGUAaABpAGYAaQBkAGYAaQBnAGQAawBpAGgAawBsAGkAbABnAGkAbABqAGcAbgBsAGsAbgBvAGwAbwBqAGwAbwBtAGoAQABvAG4AQABCAG8AQgBtAG8AQgBBAG0AQwAgAEEAQwAhACAAMABwADEAMABxAHAAMQByADIAMQBwAHIAMgBzADMAMgByAHMAMwB0ADQAMwBzAHQANAB1ADUANAB0AHUANQB2ADYANQB1AHYANgB3ADcANgB2AHcANwB4ADgANwB3AHgAOAB5ADkAOAB4AHkAOQB6ADoAOQB5AHoAOgB7ADsAOgB6AHsAOwB8ADwAOwB7AHwAPAB9AD0APAB8AH0APQB+AD4APQB9AH4APgB/AD8APgB+AH8APwBxADAAPwB/AHEAggCBAIAAgQCOAI8AjgCMAI0AjACKAIsAigCIAIkAiACGAIcAhgCEAIUAhACCAIMAggCOAIEAjgCKAIwAigCGAIgAhgCCAIQAggCKAI4AigCCAIYAMwCCADIAMwCDAIIAOwCKADoAOwCLAIoANACDADMANACEAIMAPACLADsAPACMAIsANQCEADQANQCFAIQAPQCMADwAPQCNAIwANgCFADUANgCGAIUAPgCNAD0APgCOAI0ANwCGADYANwCHAIYAPwCOAD4APwCPAI4AOACHADcAOACIAIcAMQCBADAAMQCAAIEAMACPAD8AMACBAI8AOQCIADgAOQCJAIgAMgCAADEAMgCCAIAA"),
+"lods": [0.00302359, PackedByteArray("AAAEAAEABAAFAAEABAAIAAUACAAJAAUACAAMAAkADAANAAkADAAQAA0AEAARAA0AEAAUABEAFAAVABEAFAAYABUAGAAZABUAGAAcABkAHAAdABkAagAtAGQALQB9AHwALgB9AC0ALgB+AH0AagAuAC0ALwB+AC4AagAvAC4ALwB/AH4AIAB/AC8AIABxAH8AQQAgAC8AQQAvAGoAQgBBAGoALQB8ACwAZAAtACwALAB8AHsALAB7ACsAZAAsACsAKwB7AHoAbABqAGQAQgBqAGwAZAArAF4AKwB6ACoAXgArACoAKgB6AHkAKgB5ACkAXgAqACkAKQB5AHgAZgBkAF4AbABkAGYAXgApAFgAKQB4ACgAWAApACgAKAB4AHcAKAB3ACcAWAAoACcAJwB3AHYAYABeAFgAZgBeAGAAWAAnAFIAJwB2ACYAUgAnACYAJgB2AHUAJgB1ACUAUgAmACUAJQB1AHQAWgBYAFIAYABYAFoAUgAlAEwAJQB0ACQATAAlACQAJAB0AHMAJABzACMATAAkACMAIwBzAHIAVABSAEwAWgBSAFQATAAjAEYAIwByACIARgAjACIAIgByAHAAIgBwACEARgAiACEAIQBwAHEAIQBxACAAQQAhACAARgAhAEEATgBMAEYAVABMAE4ASABGAEEATgBGAEgASABBAEIAQABIAEIARwBIAEAABQBHAEAABQBAAAEASgBIAEcABQBKAEcASgBOAEgACQBKAAUATQBOAEoACQBNAEoAUABOAE0ACQBQAE0AUABUAE4ADQBQAAkAVgBUAFAADQBWAFAAVgBaAFQAEQBWAA0AXABaAFYAEQBcAFYAXABgAFoAFQBcABEAYgBgAFwAFQBiAFwAYgBmAGAAGQBiABUAZQBmAGIAGQBlAGIAaABmAGUAGQBoAGUAaABsAGYAHQBoABkAbgBsAGgAHQBuAGgAbgBCAGwAAQBuAB0AQABCAG4AAQBAAG4AHAABAB0AHAAAAAEAHAAEAAAAHAAIAAQAHAAQAAgACAAQAAwAEAAcABgAEAAYABQAOgCKADkAOQB6ADoAOgB6AHsAOQB5AHoAOgB7ADsAOwCKADoAOwB7AHwAOAB5ADkAOAB4AHkAOQCHADgAOQCKAIcANwB4ADgAOACHADcANwB3AHgANgB3ADcANwCHADYANgB2AHcANQB2ADYANQB1AHYANgCHAIUANgCFADUANAB1ADUANQCFADQANAB0AHUAhwCDAIUANACFAIMAigCDAIcAMwB0ADQANACDADMAMwBzAHQAMgBzADMAMwCDADIAMgByAHMAMQByADIAMQBwAHIAMgCDAIAAMgCAADEAMABwADEAMQCAADAAMABxAHAAgwCOAIAAMACAAI4AgwCKAI4APwBxADAAMACOAD8APwB/AHEAPgB/AD8APwCOAD4APgB+AH8APQB+AD4APgCOAD0APQB9AH4AjgCKAIwAPQCOAIwAOwCMAIoAPAB9AD0APQCMADwAPACMADsAPAB8AH0AOwB8ADwA"), 0.00696229, PackedByteArray("AAAEAAEABAAJAAEACQBAAAEABAAMAAkAUABMAEAACQBQAEAADAARAAkAEQBQAAkADAAUABEAFAAZABEAFAAcABkAHAABABkAGQBcABEAEQBcAFAAXABYAFAAAQBoABkAGQBoAFwAAQBAAGgAaABkAFwAQABBAGgAaABBAGQAXABkAFgAUABYAEwAQQAsAGQAZAAsAFgAQQAgACwAIABxAH8AIAB/AH4AIAB+ACwALAB+AH0ALAB9AHwALAB8AHsALAB7AHoALAB6AHkALAB5AHgALAB4ACcAWAAsACcAJwB4AHcAJwB3AHYAJwB2AHUAJwB1AHQAWAAnAEwAJwB0AHMATAAnACAAJwBzACAATAAgAEEAIABzAHIAIAByAHAAIABwAHEAHAAAAAEAHAAEAAAAHAAMAAQADAAcABQAOgCKADkAOQB6ADoAOgB6AHsAOQB5AHoAOgB7ADsAOwCKADoAOwB7AHwAOAB5ADkAOQCKADgAOAB4AHkANwB4ADgAOACKADcANwB3AHgANwB2AHcAOwB8ADwAPACKADsAPAB8AH0APAB9AD0APQCKADwAPQB9AH4ANwCKAIMAPQCDAIoANQB2ADcANwCDADUANQB1AHYANQB0AHUAPQB+AD4APgCDAD0APgB+AH8APgB/AD8APwCDAD4APwB/AHEAMwB0ADUANQCDADMAMwBzAHQAMwByAHMAPwBxADEAMQCDAD8AMwCDADEAMQByADMAMQBxAHAAMQBwAHIAQABMAEEA"), 0.0254681, PackedByteArray("AAAEAAEAQQAsAFgAQQAgACwAQABBAFgAIABxAH8AIAB/AH0AIAB9ACwALAB9AHsALAB7AHkALAB5AHcALAB3ACcAWAAsACcAJwB3AHUAJwB1AHMAJwBzACAAIABzAHAAIABwAHEAQQAnACAAWAAnAEEAUABYAEEAQABYAFAAUABBAEAAFABAAFAAAQBAABQAFABQAAwADABQAAQABABQAEAABABAAAEAFAAAAAEAFAAEAAAAFAAMAAQAOwCDADkAOQB5ADsAOwB5AHsAOQB3AHkANwB3ADkAOQCDADcANwB1AHcANwCDAHUAOwB7AD0APQCDADsAPQB7AH0APQB9AH8AfwCDAD0AdQCDAHMAcQCDAH8AcwCDAHEAcQBwAHMA"), 0.0328873, PackedByteArray("AAAEAEAAFABAAAQAFABAAEAAFAAAAEAAQABYAEAAQABYACAAIABzAHEAWABzACAAWAB1AHMAWAB3AHUAQAAgAFgAIAB3AFgAIAB5AHcAIAB7AHkAIAB9AHsAIABxAH0AFAAEAAAAewCDAHkAeQCDAHcAfQCDAHsAdwCDAHUAcQCDAH0AdQCDAHMAcwCDAHEA"), 0.037893, PackedByteArray("AAAEAEAAFABAAAQAFABAAEAAFAAAAEAAQAAgAEAAQAAgACAAIABzACAAIABzAHEAIAB7AHMAIABxAHsAFAAEAAAAcQBzAHsA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 144,
+"vertex_data": PackedByteArray("Fs0uMYAzqrleTCu9Fs0uMVCubDteTCu9JhuDPIAzqrlMQh69JhuDPFCubDtMQh69n0DyPIAzqrmfQPK8n0DyPFCubDufQPK8TEIePYAzqrkmG4O8TEIePVCubDsmG4O8XkwrPYAzqrlyEWmxXkwrPVCubDtyEWmxTEIePYAzqrkmG4M8TEIePVCubDsmG4M8n0DyPIAzqrmfQPI8n0DyPFCubDufQPI8JhuDPIAzqrlMQh49JhuDPFCubDtMQh49Fs0uMYAzqrleTCs9Fs0uMVCubDteTCs9JhuDvIAzqrlMQh49JhuDvFCubDtMQh49n0DyvIAzqrmfQPI8n0DyvFCubDufQPI8TEIevYAzqrkmG4M8TEIevVCubDsmG4M8XkwrvYAzqrlyEWmxXkwrvVCubDtyEWmxTEIevYAzqrkmG4O8TEIevVCubDsmG4O8n0DyvIAzqrmfQPK8n0DyvFCubDufQPK8JhuDvIAzqrlMQh69JhuDvFCubDtMQh69PIAVr8LKqT1sXYm76kTSOsLKqT0/0X27b0NCO8LKqT1yQ0K7PNF9O8LKqT3sRNK6cF2JO8LKqT2oQ8GvPNF9O8LKqT3sRNI6b0NCO8LKqT1yQ0I76kTSOsLKqT0/0X07PIAVr8LKqT1sXYk77kTSusLKqT0/0X07cENCu8LKqT1yQ0I7ONF9u8LKqT3sRNI6bl2Ju8LKqT2oQ8GvONF9u8LKqT3sRNK6cENCu8LKqT1yQ0K77kTSusLKqT0/0X27HVVwMvPi+D2mhEu9J8SbPPPi+D28Bjy9wOgPPfPi+D2+6A+9vgY8PfPi+D0hxJu8r4RLPfPi+D0mxIGxvgY8PfPi+D0hxJs8wOgPPfPi+D2+6A89J8SbPPPi+D28Bjw9HVVwMvPi+D2mhEs9G8SbvPPi+D28Bjw9uOgPvfPi+D2+6A89sgY8vfPi+D0ixJs8o4RLvfPi+D0mxIGxsgY8vfPi+D0ixJu8uOgPvfPi+D2+6A+9G8SbvPPi+D28Bjy91BLCMChLSjzXx4m877MxMC/89DxsXYm7AACEMAo/njyfRgG88ETSOi/89Dw/0X270+fSOyZLSjzglX68FeNFOwk/njzm3u67cUNCOy/89DxyQ0K78NlCPCdLSjzw2UK84dK2Owg/njzi0ra7P9F9Oy/89DzsRNK635V+PCZLSjzQ59K75N7uOwk/njwQ40W7cV2JOy/89DyoQ8Gv2seJPCZLSjyChbywokYBPAk/njwAADiwP9F9Oy/89DzsRNI635V+PCdLSjzP59I75N7uOwg/njwQ40U7cUNCOy/89DxyQ0I78NlCPCdLSjzw2UI84dK2Owg/njzi0rY78ETSOi/89Dw/0X070ufSOyZLSjzglX48FONFOwk/njzm3u4777MxMC/89DxsXYk71BLCMChLSjzWx4k8AACAMAo/njyeRgE850TSui/89Dw/0X070OfSuyZLSjzglX48EeNFuwk/njzo3u47bUNCuy/89DxyQ0I78NlCvCZLSjzw2UI84NK2uwk/njzi0rY7NdF9uy/89DzsRNI63JV+vChLSjzO59I74t7uuwo/njwS40U7bF2Juy/89DyoQ8Gv2ceJvCZLSjyChbywoEYBvAk/njwAADiwNdF9uy/89DzsRNK625V+vChLSjzN59K74N7uuwo/njwQ40W7bUNCuy/89DxyQ0K78NlCvCZLSjzw2UK84NK2uwk/njzi0ra750TSui/89Dw/0X270OfSuyZLSjzglX68EeNFuwk/njzo3u67G9GnPPPi+D2bkkq90lZyMvPi+D1WQ1u94QobPfPi+D3fChu9nZJKPfPi+D0W0ae8YENbPfPi+D1FyYexnZJKPfPi+D0W0ac84QobPfPi+D3fChs9G9GnPPPi+D2bkko90lZyMvPi+D1WQ1s9D9GnvPPi+D2bkko92QobvfPi+D3fChs9kZJKvfPi+D0W0ac8VENbvfPi+D1FyYexkZJKvfPi+D0W0ae82QobvfPi+D3fChu9D9GnvPPi+D2bkkq9wKwDO54rsj3I8Z678lNzMp4rsj1ICqy7cE1zO54rsj1ATXO74PGeO54rsj2IrAO7aAqsO54rsj2IK2Cw4PGeO54rsj2ArAM7cE1zO54rsj1ATXM7wKwDO54rsj3I8Z478lNzMp4rsj1ICqw7SKwDu54rsj3I8Z47AE1zu54rsj1ATXM7oPGeu54rsj2ArAM7MAqsu54rsj2IK2CwoPGeu54rsj2IrAO7AE1zu54rsj1ATXO7SKwDu54rsj3I8Z67")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3gbfs"]
+resource_name = "MartiniGlass_Cylinder_004"
+_surfaces = [{
+"aabb": AABB(-0.053531, -0.000324633, -0.053531, 0.107062, 0.121851, 0.107062),
+"attribute_data": PackedByteArray("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"),
+"format": 34359742487,
+"index_count": 852,
+"index_data": PackedByteArray("AgAHAAQAAgAGAAcABgAKAAcABgAIAAoACAANAAoACAALAA0ACwAQAA0ACwAOABAADgATABAADgARABMAEQAWABMAEQAUABYAFAAZABYAFAAXABkAFwAcABkAFwAaABwAGgAfABwAGgAdAB8AHQAiAB8AHQAgACIAIAAlACIAIAAjACUAIwAoACUAIwAmACgAJgArACgAJgApACsAKQAuACsAKQAsAC4AgQBAAH4AgQBBAEAALAAxAC4ALAAvADEALwADADEALwAAAAMAMAAFAAEABQAMAAkADAASAA8AEgAYABUAGAAeABsAHgAkACEAJAAqACcAKgAwAC0AMAAMAAUADAAYABIAGAAkAB4AJAAwACoAMAAYAAwAGAAwACQAbAA5AGkAbAA6ADkAVQBCAIQAVQAyAEIAaQA4AGYAaQA5ADgAewA+AHgAewA/AD4AXAA0AFkAXAA1ADQAZgA3AGMAZgA4ADcAdQA8AHIAdQA9ADwAhABBAIEAhABCAEEAYAA1AFwAYAA2ADUAbwA6AGwAbwA7ADoAfgA/AHsAfgBAAD8AFgBnABMAFgBqAGcAeAA9AHUAeAA+AD0AYwA2AF8AYwA3ADYAcgA7AG8AcgA8ADsAPgCdAD0APgCfAJ0ALgB/ACsALgCCAH8AGQBqABYAGQBtAGoAMQCCAC4AMQCFAIIAHABtABkAHABwAG0ABwBUAAQABwBaAFQAAwCFADEAAwBTAIUAHwBwABwAHwBzAHAACgBaAAcACgBdAFoAIgBzAB8AIgB2AHMADQBdAAoADQBhAF0AJQB2ACIAJQB5AHYAEABhAA0AEABkAGEAKAB5ACUAKAB8AHkAEwBkABAAEwBnAGQAKwB8ACgAKwB/AHwATQCxAEwATQCyALEANwCPADYANwCRAI8APwCfAD4APwChAJ8AOACRADcAOACTAJEAQAChAD8AQACjAKEAOQCTADgAOQCVAJMAQQCjAEAAQQClAKMAOgCVADkAOgCXAJUAQgClAEEAQgCmAKUAOwCXADoAOwCZAJcANACLADMANACIAIsAMgCmAEIAMgCJAKYAPACZADsAPACbAJkANQCIADQANQCNAIgAPQCbADwAPQCdAJsANgCNADUANgCPAI0AWgBYAFQAWgBbAFgAWwBWAFgAWwBZAFYAXQBbAFoAXQBeAFsAXgBZAFsAXgBcAFkAYQBeAF0AYQBiAF4AYgBcAF4AYgBgAFwAZABiAGEAZABlAGIAZQBfAGIAZQBjAF8AZwBlAGQAZwBoAGUAaABjAGUAaABmAGMAagBoAGcAagBrAGgAawBmAGgAawBpAGYAbQBrAGoAbQBuAGsAbgBpAGsAbgBsAGkAcABuAG0AcABxAG4AcQBsAG4AcQBvAGwAcwBxAHAAcwB0AHEAdABvAHEAdAByAG8AdgB0AHMAdgB3AHQAdwByAHQAdwB1AHIAeQB3AHYAeQB6AHcAegB1AHcAegB4AHUAfAB6AHkAfAB9AHoAfQB4AHoAfQB7AHgAfwB9AHwAfwCAAH0AgAB7AH0AgAB+AHsAggCAAH8AggCDAIAAgwB+AIAAgwCBAH4AhQCDAIIAhQCGAIMAhgCBAIMAhgCEAIEAUwCGAIUAUwBXAIYAVwCEAIYAVwBVAIQAWQAzAFYAWQA0ADMAQwCHAEQAQwCKAIcARACMAEUARACHAIwARQCOAEYARQCMAI4ARgCQAEcARgCOAJAARwCSAEgARwCQAJIASACUAEkASACSAJQASQCWAEoASQCUAJYASgCYAEsASgCWAJgASwCaAEwASwCYAJoATACcAE0ATACaAJwATQCeAE4ATQCcAJ4ATgCgAE8ATgCeAKAATwCiAFAATwCgAKIAUACkAFEAUACiAKQAUQCnAFIAUQCkAKcAUgCKAEMAUgCnAIoAqgCpAKgAqQC2ALcAtgC0ALUAtACyALMAsgCwALEAsACuAK8ArgCsAK0ArACqAKsAqgC2AKkAtgCyALQAsgCuALAArgCqAKwAqgCyALYAsgCqAK4ARgCqAEUARgCrAKoATgCyAE0ATgCzALIARwCrAEYARwCsAKsATwCzAE4ATwC0ALMASACsAEcASACtAKwAUAC0AE8AUAC1ALQASQCtAEgASQCuAK0AUQC1AFAAUQC2ALUASgCuAEkASgCvAK4AUgC2AFEAUgC3ALYASwCvAEoASwCwAK8ARACpAEMARACoAKkAQwC3AFIAQwCpALcATACwAEsATACxALAARQCoAEQARQCqAKgA"),
+"lods": [0.00302359, PackedByteArray("zADRAM8A0gDUANAA0wDXANUA2ADaANYA2QDdANsA3gDgANwA3wDjAOEA5ADmAOIA5QDpAOcA6gDsAOgA6wDvAO0A8ADyAO4A8QD1APMA9gD5APQAgQBAAHsAQACjAKEAQQCjAEAAQQClAKMAgQBBAEAAQgClAEEAgQBCAEEAQgCmAKUAMgCmAEIAMgCJAKYAVQAyAEIAVQBCAIEAVwBVAIEAQAChAD8AewBAAD8APwChAJ8APwCfAD4AewA/AD4APgCfAJ0AgwCBAHsAVwCBAIMAewA+AHUAPgCdAD0AdQA+AD0APQCdAJsAPQCbADwAdQA9ADwAPACbAJkAfQB7AHUAgwB7AH0AdQA8AG8APACZADsAbwA8ADsAOwCZAJcAOwCXADoAbwA7ADoAOgCXAJUAdwB1AG8AfQB1AHcAbwA6AGkAOgCVADkAaQA6ADkAOQCVAJMAOQCTADgAaQA5ADgAOACTAJEAcQBvAGkAdwBvAHEAaQA4AGMAOACRADcAYwA4ADcANwCRAI8ANwCPADYAYwA3ADYANgCPAI0AawBpAGMAcQBpAGsAYwA2AFwANgCNADUAXAA2ADUANQCNAIgANQCIADQAXAA1ADQANACIAIsANACLADMAVgA0ADMAXAA0AFYAZQBjAFwAawBjAGUAXgBcAFYAZQBcAF4AXgBWAFgAVABeAFgAXQBeAFQACgBdAFQACgBUAAQAYQBeAF0ACgBhAF0AYQBlAF4AEABhAAoAZABlAGEAEABkAGEAZwBlAGQAEABnAGQAZwBrAGUAFgBnABAAbQBrAGcAFgBtAGcAbQBxAGsAHABtABYAcwBxAG0AHABzAG0AcwB3AHEAIgBzABwAeQB3AHMAIgB5AHMAeQB9AHcAKAB5ACIAfAB9AHkAKAB8AHkAfwB9AHwAKAB/AHwAfwCDAH0ALgB/ACgAhQCDAH8ALgCFAH8AhQBXAIMAAwCFAC4AUwBXAIUAAwBTAIUA9wDNAPoA+ADLAM4ALQAJAAEALQAPAAkALQAbAA8ADwAbABUAGwAtACcAGwAnACEATQCyAEwATACcAE0ATQCcAJ4ATACaAJwATQCeAE4ATgCyAE0ATgCeAKAASwCaAEwASwCYAJoATACvAEsATACyAK8ASgCYAEsASwCvAEoASgCWAJgASQCWAEoASgCvAEkASQCUAJYASACUAEkASACSAJQASQCvAK0ASQCtAEgARwCSAEgASACtAEcARwCQAJIArwCrAK0ARwCtAKsAsgCrAK8ARgCQAEcARwCrAEYARgCOAJAARQCOAEYARgCrAEUARQCMAI4ARACMAEUARACHAIwARQCrAKgARQCoAEQAQwCHAEQARACoAEMAQwCKAIcAqwC2AKgAQwCoALYAqwCyALYAUgCKAEMAQwC2AFIAUgCnAIoAUQCnAFIAUgC2AFEAUQCkAKcAUACkAFEAUQC2AFAAUACiAKQAtgCyALQAUAC2ALQATgC0ALIATwCiAFAAUAC0AE8ATwC0AE4ATwCgAKIATgCgAE8A"), 0.00696229, PackedByteArray("vwDCAMEACAAQAAQAEABUAAQACAAUABAAyADHAFQAEABnAFQAFAAcABAAHABnABAAFAAgABwAIAAoABwAIAAsACgALAADACgAKABzABwAHABzAGcAcwDJAGcAAwB/ACgAKAB/AHMAAwBTAH8AfwDKAHMAUwBVAH8AfwBVAHsAcwB7AG8AZwBvAGMAVQA/AHsAewA/AG8AVQAyAD8AMgCJAKYAMgCmAKUAMgClAD8APwClAKMAPwCjAKEAPwChAJ8APwCfAJ0APwCdAJsAPwCbAJkAPwCZADoAbwA/ADoAOgCZAJcAOgCXAJUAOgCVAJMAOgCTAJEAbwA6AGMAOgCRAI8AYwA6ADMAOgCPADMAYwAzAFYAMwCPAI0AMwCNAIgAMwCIAIsAwwC+AMAALQAJAAEALQAVAAkAFQAtACEATQCyAEwATACcAE0ATQCcAJ4ATACaAJwATQCeAE4ATgCyAE0ATgCeAKAASwCaAEwATACyAEsASwCYAJoASgCYAEsASwCyAEoASgCWAJgASgCUAJYATgCgAE8ATwCyAE4ATwCgAKIATwCiAFAAUACyAE8AUACiAKQASgCyAKsAUACrALIASACUAEoASgCrAEgASACSAJQASACQAJIAUACkAFEAUQCrAFAAUQCkAKcAUQCnAFIAUgCrAFEAUgCnAIoARgCQAEgASACrAEYARgCOAJAARgCMAI4AUgCKAEQARACrAFIARgCrAEQARACMAEYARACKAIcARACHAIwAxADGAMUA"), 0.0254681, PackedByteArray("uQC8ALsAVQA/AG8AVQAyAD8AUwBVAG8AMgCJAKYAMgCmAKMAMgCjAD8APwCjAJ8APwCfAJsAPwCbAJcAPwCXADoAbwA/ADoAOgCXAJMAOgCTAI8AOgCPADMAMwCPAIgAMwCIAIsAVgA6ADMAbwA6AFYAZwBvAFYAUwBvAGcAZwBWAFQAIABTAGcAAwBTACAAIABnABQAFABnAAgACABnAFQACABUAAQAvQC4ALoAIQAJAAEAIQAVAAkATgCrAEwATACaAE4ATgCaAJ4ATACWAJoASgCWAEwATACrAEoASgCSAJYASgCrAJIATgCeAFAAUACrAE4AUACeAKIAUACiAKcApwCrAFAAkgCrAI4AigCrAKcAjgCrAIoAigCHAI4A"), 0.0328873, PackedByteArray("AgAIAFQAIABUAAgAIABTAFQAIAAAAFMAUwBvAFQAVABvADMAMwCPAIsAbwCPADMAbwCTAI8AbwCXAJMAUwAyAG8AMgCXAG8AMgCbAJcAMgCfAJsAMgCjAJ8AMgCJAKMAIQAJAAEAngCrAJoAmgCrAJYAogCrAJ4AlgCrAJIAigCrAKIAkgCrAI4AjgCrAIoA"), 0.037893, PackedByteArray("AgAIAFQAIABUAAgAIABTAFQAIAAAAFMAUwAyAFQAVAAyADMAMgCPADMAMwCPAIsAMgCfAI8AMgCJAJ8AIQAJAAEAigCOAJ4A")],
+"material": SubResource("StandardMaterial3D_v4k41"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 251,
+"vertex_data": PackedByteArray("Fs0uMYAzqrleTCu9Fs0uMYAzqrleTCu9Fs0uMYAzqrleTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9JhuDPIAzqrlMQh69JhuDPIAzqrlMQh69JhuDPFCubDtMQh69n0DyPIAzqrmfQPK8n0DyPIAzqrmfQPK8n0DyPFCubDufQPK8TEIePYAzqrkmG4O8TEIePYAzqrkmG4O8TEIePVCubDsmG4O8XkwrPYAzqrlyEWmxXkwrPYAzqrlyEWmxXkwrPVCubDtyEWmxTEIePYAzqrkmG4M8TEIePYAzqrkmG4M8TEIePVCubDsmG4M8n0DyPIAzqrmfQPI8n0DyPIAzqrmfQPI8n0DyPFCubDufQPI8JhuDPIAzqrlMQh49JhuDPIAzqrlMQh49JhuDPFCubDtMQh49Fs0uMYAzqrleTCs9Fs0uMYAzqrleTCs9Fs0uMVCubDteTCs9JhuDvIAzqrlMQh49JhuDvIAzqrlMQh49JhuDvFCubDtMQh49n0DyvIAzqrmfQPI8n0DyvIAzqrmfQPI8n0DyvFCubDufQPI8TEIevYAzqrkmG4M8TEIevYAzqrkmG4M8TEIevVCubDsmG4M8XkwrvYAzqrlyEWmxXkwrvYAzqrlyEWmxXkwrvVCubDtyEWmxTEIevYAzqrkmG4O8TEIevYAzqrkmG4O8TEIevVCubDsmG4O8n0DyvIAzqrmfQPK8n0DyvIAzqrmfQPK8n0DyvFCubDufQPK8JhuDvIAzqrlMQh69JhuDvIAzqrlMQh69JhuDvFCubDtMQh69PIAVr8LKqT1sXYm7PIAVr8LKqT1sXYm76kTSOsLKqT0/0X27b0NCO8LKqT1yQ0K7PNF9O8LKqT3sRNK6cF2JO8LKqT2oQ8GvPNF9O8LKqT3sRNI6b0NCO8LKqT1yQ0I76kTSOsLKqT0/0X07PIAVr8LKqT1sXYk77kTSusLKqT0/0X07cENCu8LKqT1yQ0I7ONF9u8LKqT3sRNI6bl2Ju8LKqT2oQ8GvONF9u8LKqT3sRNK6cENCu8LKqT1yQ0K77kTSusLKqT0/0X27HVVwMvPi+D2mhEu9J8SbPPPi+D28Bjy9wOgPPfPi+D2+6A+9vgY8PfPi+D0hxJu8r4RLPfPi+D0mxIGxvgY8PfPi+D0hxJs8wOgPPfPi+D2+6A89J8SbPPPi+D28Bjw9HVVwMvPi+D2mhEs9G8SbvPPi+D28Bjw9uOgPvfPi+D2+6A89sgY8vfPi+D0ixJs8o4RLvfPi+D0mxIGxsgY8vfPi+D0ixJu8uOgPvfPi+D2+6A+9G8SbvPPi+D28Bjy91BLCMChLSjzXx4m81BLCMChLSjzXx4m877MxMC/89DxsXYm777MxMC/89DxsXYm7AACEMAo/njyfRgG8AACEMAo/njyfRgG88ETSOi/89Dw/0X270+fSOyZLSjzglX68FeNFOwk/njzm3u67cUNCOy/89DxyQ0K78NlCPCdLSjzw2UK84dK2Owg/njzi0ra7P9F9Oy/89DzsRNK6P9F9Oy/89DzsRNK635V+PCZLSjzQ59K75N7uOwk/njwQ40W7cV2JOy/89DyoQ8Gv2seJPCZLSjyChbywokYBPAk/njwAADiwP9F9Oy/89DzsRNI635V+PCdLSjzP59I75N7uOwg/njwQ40U7cUNCOy/89DxyQ0I78NlCPCdLSjzw2UI84dK2Owg/njzi0rY78ETSOi/89Dw/0X070ufSOyZLSjzglX48FONFOwk/njzm3u4777MxMC/89DxsXYk71BLCMChLSjzWx4k8AACAMAo/njyeRgE850TSui/89Dw/0X070OfSuyZLSjzglX48EeNFuwk/njzo3u47bUNCuy/89DxyQ0I78NlCvCZLSjzw2UI84NK2uwk/njzi0rY7NdF9uy/89DzsRNI63JV+vChLSjzO59I74t7uuwo/njwS40U7bF2Juy/89DyoQ8Gv2ceJvCZLSjyChbywoEYBvAk/njwAADiwNdF9uy/89DzsRNK625V+vChLSjzN59K74N7uuwo/njwQ40W7bUNCuy/89DxyQ0K78NlCvCZLSjzw2UK84NK2uwk/njzi0ra750TSui/89Dw/0X270OfSuyZLSjzglX68EeNFuwk/njzo3u67G9GnPPPi+D2bkkq9G9GnPPPi+D2bkkq90lZyMvPi+D1WQ1u90lZyMvPi+D1WQ1u90lZyMvPi+D1WQ1u94QobPfPi+D3fChu94QobPfPi+D3fChu9nZJKPfPi+D0W0ae8nZJKPfPi+D0W0ae8YENbPfPi+D1FyYexYENbPfPi+D1FyYexnZJKPfPi+D0W0ac8nZJKPfPi+D0W0ac84QobPfPi+D3fChs94QobPfPi+D3fChs9G9GnPPPi+D2bkko9G9GnPPPi+D2bkko90lZyMvPi+D1WQ1s90lZyMvPi+D1WQ1s9D9GnvPPi+D2bkko9D9GnvPPi+D2bkko92QobvfPi+D3fChs92QobvfPi+D3fChs9kZJKvfPi+D0W0ac8kZJKvfPi+D0W0ac8VENbvfPi+D1FyYexVENbvfPi+D1FyYexkZJKvfPi+D0W0ae8kZJKvfPi+D0W0ae82QobvfPi+D3fChu92QobvfPi+D3fChu9D9GnvPPi+D2bkkq9D9GnvPPi+D2bkkq9wKwDO54rsj3I8Z678lNzMp4rsj1ICqy7cE1zO54rsj1ATXO74PGeO54rsj2IrAO7aAqsO54rsj2IK2Cw4PGeO54rsj2ArAM7cE1zO54rsj1ATXM7wKwDO54rsj3I8Z478lNzMp4rsj1ICqw7SKwDu54rsj3I8Z47AE1zu54rsj1ATXM7oPGeu54rsj2ArAM7MAqsu54rsj2IK2CwoPGeu54rsj2IrAO7AE1zu54rsj1ATXO7SKwDu54rsj3I8Z67Fs0uMYAzqrleTCu9Fs0uMYAzqrleTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9n0DyPIAzqrmfQPK8n0DyvIAzqrmfQPI8Fs0uMYAzqrleTCu9Fs0uMYAzqrleTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9n0DyPIAzqrmfQPK8n0DyvIAzqrmfQPK81BLCMChLSjzXx4m877MxMC/89DxsXYm7cV2JOy/89DyoQ8GvcV2JOy/89DyoQ8Gv35V+PCdLSjzP59I777MxMC/89DxsXYk7bF2Juy/89DyoQ8GvFs0uMYAzqrleTCu9Fs0uMYAzqrleTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9Fs0uMVCubDteTCu9n0DyPIAzqrmfQPK8n0DyPIAzqrmfQPK8n0DyPIAzqrmfQPK8n0DyPFCubDufQPK8n0DyPFCubDufQPK8n0DyPFCubDufQPK8XkwrPYAzqrlyEWmxXkwrPYAzqrlyEWmxXkwrPYAzqrlyEWmxXkwrPVCubDtyEWmxXkwrPVCubDtyEWmxXkwrPVCubDtyEWmxn0DyPIAzqrmfQPI8n0DyPIAzqrmfQPI8n0DyPIAzqrmfQPI8n0DyPFCubDufQPI8n0DyPFCubDufQPI8n0DyPFCubDufQPI8Fs0uMYAzqrleTCs9Fs0uMYAzqrleTCs9Fs0uMYAzqrleTCs9Fs0uMVCubDteTCs9Fs0uMVCubDteTCs9Fs0uMVCubDteTCs9n0DyvIAzqrmfQPI8n0DyvIAzqrmfQPI8n0DyvIAzqrmfQPI8n0DyvFCubDufQPI8n0DyvFCubDufQPI8n0DyvFCubDufQPI8XkwrvYAzqrlyEWmxXkwrvYAzqrlyEWmxXkwrvYAzqrlyEWmxXkwrvVCubDtyEWmxXkwrvVCubDtyEWmxXkwrvVCubDtyEWmxn0DyvIAzqrmfQPK8n0DyvIAzqrmfQPK8n0DyvIAzqrmfQPK8n0DyvIAzqrmfQPK8n0DyvFCubDufQPK8n0DyvFCubDufQPK8pcMAACkUq7qlwwAA////P6XDAACnChPKZc3//8IQEMVlzf//Igqetw/MRxYM2q02D8xHFgAAQK1P1QLnAABArXvOPScAAP/fe849J1rEXC+I1zrUAAD/3w/MyDUAAEDtD8zINeO4HidP1avDAABA7aXDpUMAAACApcOlQ1m8LB5lzZmy/////8e1EEz+/76Sx7UQTDzOchxSvK+q/v++kj2ne07////fPad7TrjeLSLEq3Wo////30eWEEz+/77SR5YQTFrtBi38mK+q/v+90v9/pUP///+//3+lQ////z//f5my////v7dpEEyA2v6/t2kQTAzaUUkCZ6+qgdr/v8FYe07/v/+/wVh7TlrEolA6VHWo/7//vzdKEEx9pf+/N0oQTOO44FisQ6+qfKX/v1k8pUP/f/+/WTylQ1m80mGZMpmy/3//v+8zyDWBWv6/7zPINTzOjWOvKqvDglr/v4MxPSf/P/+/gzE9J7je0l12KDrU/z//v+8zRxZ+Jf+/7zNHFlrt+FKvKgLnfSX/vz3UAAD///+/PdQAAP///7+W29Ma////v53dzi7///+/ltvDQP///7891D5U////v8PAl1v///8/zq6dXf///z/Smpdb////P/9/PlT///8/LGWXW////z8wUZ1d////Pzs/l1v///8/wSs+VP///79oJMNA////v2Eizi7///+/aCTTGv///7//f3ji/v//v3J1+Nuq8P/F8Gzh2bvma8qGZvjbGuJnzXlieOJ44sLO+VuF5i3l8c7iWfDsJuuhzPlbcfX986nHhZ3//////78FpHH1qvD+uRym8Oy75pO1BaSF5hrilrKFnXjieOI8sXiZ+Nst5QyxDpPh2SbrXbOMivjb/fNUuOur//////+/66v//////78V7f//////vxXt//////+/Jsn//////78myf//////vwDx5d7///+/7LPJ8P///79T0Szo////vwXy/Mb///+/YrbN5P///7+m0yvW////vwDxF7D///+/APEXsP///7/ss0fb////v1PRfcb///+/Fe3okv///7/rqxPU////vybJ2Lb///+/58/9jv///z+3pBHM////P4G5q67///8/Arn5jf///z8wm5zJ////P9KpWKz///8/GaH9jv///z81jxHM////P9GXq67///8//3/okv///z//fxPU////P/9/2Lb///8/5V79jv///z/JcBHM////Py1oq67///8//Eb5jf///z/OZJzJ////PyxWWKz///8/FzD9jv///z9HWxHM////P31Gq67///8/6RLokv///78TVBPU////v9g22Lb///+//g4XsP///78STEfb////v6sufcb///+/+Q38xv///7+cSc3k////v1gsK9b///+//g7l3v///78STMnw////v6suLOj///+/jeeq4X/VrbqN56rh////v9Ph//////+/0+H//////7/T4f//////vxTpdMsBul61FOl0y////7+N58W2IaNGq43nxbb///+/0+EqniqeFY/T4Sqe////vznJcJiO1pCROclwmP///z+KtOmWveoAnYq06Zb///8/VJ5wmFz1v6pUnnCY////P/9/Kp7///+//38qnv///z+qYXCYf9VQxaphcJj///8/dEvplgG6n8p0S+mW////P8U2cJgho7fUxTZwmP///z8rHiqeKp7p8CseKp7///+/cRjFto7Wbu5xGMW2////v+oWdMu96v7i6hZ0y////79xGKrh////v3EYquFc9T/VcXMh1bTsHMf/f2Pc////v2tp19LC4EXMsGEh1W/b7c9kXGPcY9zM0SJVr+Ei4EbS11Jr6XLnnc8iVXHzxPGkyZqj//////+/3Kpx87Ts4rgnrWvpwuC5s9yqr+Fv2xGwmqNj3GPcMa5OniHVIuC3rZOW19Jy52CwjYwh1cTxWbYWImo9KRSrusfa6wynChPKXBnSQMIQEMX183UOIgqetzLYuBoAAP/fByNxQv+//7/KJQMRKRSruhTcSQ2nChPKdBxEFMIQEMX+6xkQIgqet07cXRgAAP/f3CXUGv8//7/NVvLE////v5JXgLv///+/qla3uv///7+lxx/F////v9rFBsT///8/gVVp8f///z+gUqPF////v6gpIw4pFKu6kNgPE6cKE8qGFJLiwhAQxQcbVxHCEBDFkuYeGSIKnrfY5vLcIgqetx7bTR0AAP/fVPdT0AAA/99J3Is4AAD/32rm8tYAAP/f2/CdRAAA/9979KqmAAD/34HZgD8AAACAkvb9YwAAAICpzkpdAAAAgGvwF6D/////NudDd/////88zQKN/////9DB3Vr////f/MlQef///9/qprth////3y7HAoz////fcrS2ev///98Dmrub////3y6fslz///+/wJFCjf///788cpla////v5yOJ5z///+/l2tna////79pZCCb////v6hlzV//v/+/SVhmkv+//78TRj1k/7//vxdWlJb/v/+/Cjsec/+//79GJvSH/7//v/07BGH/f/+/CCDxcv9//7/8KrpF/3//v1kWvoH/f/+/hAyLXf9//7+tEK25/3//v8oiS0X/P/+/dgINt/8//7+7AlIu/z//v4on8xf/P/+/mxMVwv8//79KEA/V/z//vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_x4ojm")
+
+[node name="Bar" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.616354, 0, 0.986723)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oile2")
+
+[node name="Bar" parent="." instance=ExtResource("1_wxmnf")]
+
+[node name="Bar" parent="Bar" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qryt2")
+
+[node name="Bottles" type="Node3D" parent="."]
+
+[node name="Bottle" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71253, 0.181492, 0.0133209)
+
+[node name="Bottle" parent="Bottles/Bottle" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle2" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683148, 0.181492, 0.0133209)
+
+[node name="Bottle" parent="Bottles/Bottle2" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle3" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.655725, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle3" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle4" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626996, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle4" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle5" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600878, 0.181492, 0.0133211)
+
+[node name="Bottle" parent="Bottles/Bottle5" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle6" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71253, 0.181492, -0.0154081)
+
+[node name="Bottle" parent="Bottles/Bottle6" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle7" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683148, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle7" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle8" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.655725, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle8" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle9" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626996, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle9" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle10" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600878, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle10" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle11" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600878, 0.181492, 0.0446619)
+
+[node name="Bottle" parent="Bottles/Bottle11" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle12" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514997, 0.181492, 0.0133209)
+
+[node name="Bottle" parent="Bottles/Bottle12" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle13" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485616, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle13" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle14" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458192, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle14" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle15" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.429463, 0.181492, 0.0133211)
+
+[node name="Bottle" parent="Bottles/Bottle15" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle16" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403346, 0.181492, 0.0133212)
+
+[node name="Bottle" parent="Bottles/Bottle16" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle17" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514997, 0.181492, -0.0154081)
+
+[node name="Bottle" parent="Bottles/Bottle17" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle18" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485616, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle18" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle19" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458192, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle19" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle20" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.429463, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle20" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle21" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403346, 0.181492, -0.0154078)
+
+[node name="Bottle" parent="Bottles/Bottle21" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle22" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403346, 0.181492, 0.044662)
+
+[node name="Bottle" parent="Bottles/Bottle22" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle23" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317465, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle23" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle24" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288083, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle24" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle25" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26066, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle25" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle26" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231931, 0.181492, 0.0133211)
+
+[node name="Bottle" parent="Bottles/Bottle26" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle27" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205814, 0.181492, 0.0133212)
+
+[node name="Bottle" parent="Bottles/Bottle27" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle28" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317465, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle28" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle29" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288083, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle29" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle30" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26066, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle30" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle31" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231931, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle31" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle32" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205814, 0.181492, -0.0154078)
+
+[node name="Bottle" parent="Bottles/Bottle32" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle33" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205814, 0.181492, 0.044662)
+
+[node name="Bottle" parent="Bottles/Bottle33" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle34" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129522, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle34" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle35" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10014, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle35" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle36" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0727166, 0.181492, 0.013321)
+
+[node name="Bottle" parent="Bottles/Bottle36" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle37" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0439876, 0.181492, 0.0133211)
+
+[node name="Bottle" parent="Bottles/Bottle37" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle38" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178702, 0.181492, 0.0133212)
+
+[node name="Bottle" parent="Bottles/Bottle38" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle39" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129522, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle39" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle40" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10014, 0.181492, -0.015408)
+
+[node name="Bottle" parent="Bottles/Bottle40" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle41" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0727167, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle41" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle42" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0439876, 0.181492, -0.0154079)
+
+[node name="Bottle" parent="Bottles/Bottle42" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle43" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178702, 0.181492, -0.0154078)
+
+[node name="Bottle" parent="Bottles/Bottle43" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Bottle44" parent="Bottles" instance=ExtResource("2_ttu7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178702, 0.181492, 0.044662)
+
+[node name="Bottle" parent="Bottles/Bottle44" index="0"]
+surface_material_override/0 = ExtResource("3_ra2u4")
+surface_material_override/1 = ExtResource("4_55sem")
+surface_material_override/2 = ExtResource("5_qy5w5")
+
+[node name="Glasses" type="Node3D" parent="."]
+
+[node name="MartiniGlass" parent="Glasses" instance=ExtResource("6_g6dvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.180395, 0.102576)
+
+[node name="MartiniGlass" parent="Glasses/MartiniGlass" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass2" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0353235, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass3" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0691751, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass4" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.101555, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass5" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135897, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass6" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.0353235)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass8" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0691751, 0, 0.0353235)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass10" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135897, 0, 0.0353235)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass11" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.184699, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass12" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.220022, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass13" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.253874, 0, 0)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass14" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.286254, 0, 5.96046e-08)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass15" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.320596, 0, 1.19209e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass16" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.184699, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass17" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.220022, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass19" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.286254, 0, 0.0353235)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass20" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.320596, 0, 0.0353235)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass21" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.387199, 0, 5.96046e-08)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass22" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.422523, 0, 5.96046e-08)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass23" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.456375, 0, 5.96046e-08)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass24" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.488754, 0, 1.19209e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass25" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.523097, 0, 1.78814e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass26" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.387199, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass27" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.422523, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass28" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.456375, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass29" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.488754, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass31" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.588792, 0, 1.78814e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass32" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.624116, 0, 1.78814e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass33" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.657967, 0, 1.78814e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass34" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.690347, 0, 2.38419e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass35" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.724689, 0, 2.98023e-07)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass36" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.588792, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass37" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.624116, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass38" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.657967, 0, 0.0353236)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass41" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, -0.180707)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass42" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.209082, 0, -0.180707)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass43" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, -0.180707)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass44" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, -0.180707)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass45" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.108509, 0, -0.180707)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass46" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, -0.145383)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass47" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.209082, 0, -0.145383)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass48" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, -0.145383)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass49" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, -0.145383)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass50" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.108509, 0, -0.145383)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass51" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, -0.0989799)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass52" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.209082, 0, -0.0989799)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass53" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, -0.0989799)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass54" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, -0.0989799)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass55" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.108509, 0, -0.0989799)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass56" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, -0.0636566)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass57" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.209082, 0, -0.0636566)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass58" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, -0.0636566)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass59" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, -0.0636566)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass60" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.108509, 0, -0.0636566)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass61" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, -0.0190694)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass62" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.209082, 0, -0.0190694)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass63" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, -0.0190694)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass64" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, -0.0190694)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass65" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.108509, 0, -0.0190693)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass66" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.244406, 0, 0.016254)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass68" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.175231, 0, 0.016254)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[node name="MartiniGlass69" type="MeshInstance3D" parent="Glasses/MartiniGlass"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.142851, 0, 0.016254)
+mesh = SubResource("ArrayMesh_3gbfs")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wb7u")
+
+[editable path="Bar"]
+[editable path="Bottles/Bottle"]
+[editable path="Bottles/Bottle2"]
+[editable path="Bottles/Bottle3"]
+[editable path="Bottles/Bottle4"]
+[editable path="Bottles/Bottle5"]
+[editable path="Bottles/Bottle6"]
+[editable path="Bottles/Bottle7"]
+[editable path="Bottles/Bottle8"]
+[editable path="Bottles/Bottle9"]
+[editable path="Bottles/Bottle10"]
+[editable path="Bottles/Bottle11"]
+[editable path="Bottles/Bottle12"]
+[editable path="Bottles/Bottle13"]
+[editable path="Bottles/Bottle14"]
+[editable path="Bottles/Bottle15"]
+[editable path="Bottles/Bottle16"]
+[editable path="Bottles/Bottle17"]
+[editable path="Bottles/Bottle18"]
+[editable path="Bottles/Bottle19"]
+[editable path="Bottles/Bottle20"]
+[editable path="Bottles/Bottle21"]
+[editable path="Bottles/Bottle22"]
+[editable path="Bottles/Bottle23"]
+[editable path="Bottles/Bottle24"]
+[editable path="Bottles/Bottle25"]
+[editable path="Bottles/Bottle26"]
+[editable path="Bottles/Bottle27"]
+[editable path="Bottles/Bottle28"]
+[editable path="Bottles/Bottle29"]
+[editable path="Bottles/Bottle30"]
+[editable path="Bottles/Bottle31"]
+[editable path="Bottles/Bottle32"]
+[editable path="Bottles/Bottle33"]
+[editable path="Bottles/Bottle34"]
+[editable path="Bottles/Bottle35"]
+[editable path="Bottles/Bottle36"]
+[editable path="Bottles/Bottle37"]
+[editable path="Bottles/Bottle38"]
+[editable path="Bottles/Bottle39"]
+[editable path="Bottles/Bottle40"]
+[editable path="Bottles/Bottle41"]
+[editable path="Bottles/Bottle42"]
+[editable path="Bottles/Bottle43"]
+[editable path="Bottles/Bottle44"]
+[editable path="Glasses/MartiniGlass"]

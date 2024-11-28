@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfijmnej8r66m"]
+
+[ext_resource type="Script" path="res://game/mechanics/crowd.gd" id="1_l6opw"]
+[ext_resource type="PackedScene" uid="uid://cn5ethuvefovn" path="res://game/mechanics/crowd_man.tscn" id="2_34xvy"]
+[ext_resource type="Texture2D" uid="uid://cv4372sjxor7s" path="res://assets/2d/sprites/circle_edge.png" id="3_f37ya"]
+[ext_resource type="AudioStream" uid="uid://cr3lhuepldlbb" path="res://assets/sfx/mrmlani.wav" id="4_net2c"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o4ktj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x1iti"]
+height = 0.5
+
+[node name="Crowd" type="Node3D"]
+script = ExtResource("1_l6opw")
+man_template = ExtResource("2_34xvy")
+
+[node name="Edge" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.01, 0)
+visible = false
+modulate = Color(1, 1, 1, 0.458824)
+texture = SubResource("ViewportTexture_o4ktj")
+
+[node name="PeopleSlot" type="Node3D" parent="."]
+
+[node name="PlayerSpoter" type="Area3D" parent="."]
+
+[node name="CollisionCylinder" type="CollisionShape3D" parent="PlayerSpoter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_x1iti")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport"]
+offset_right = 256.0
+offset_bottom = 256.0
+fill_mode = 4
+texture_under = ExtResource("3_f37ya")
+texture_over = ExtResource("3_f37ya")
+texture_progress = ExtResource("3_f37ya")
+tint_under = Color(1, 0, 0, 1)
+tint_over = Color(0, 0, 1, 0)
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="CrowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_net2c")
+bus = &"SFX"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[connection signal="body_entered" from="PlayerSpoter" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="PlayerSpoter" to="." method="_on_player_exited"]

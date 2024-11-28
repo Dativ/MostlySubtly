@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://btychf625rrcr"]
+
+[ext_resource type="Script" path="res://game/player/player.gd" id="1_fq4cx"]
+[ext_resource type="PackedScene" uid="uid://vxtrecoqcr76" path="res://assets/meshes/characters/character2.glb" id="2_epep7"]
+[ext_resource type="AudioStream" uid="uid://dwh7nfeybtgr3" path="res://assets/sfx/step.wav" id="3_qho5w"]
+[ext_resource type="AudioStream" uid="uid://o5hr06506x4t" path="res://assets/sfx/mark.wav" id="4_2ng3h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_da1k2"]
+radius = 0.15
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ytpri"]
+height = 0.913701
+
+[sub_resource type="Animation" id="Animation_mp5m2"]
+resource_name = "run_sound"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep_sound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jmj87"]
+resource_name = "walk_sound"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep_sound"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ufld"]
+_data = {
+"run_sound": SubResource("Animation_mp5m2"),
+"walk_sound": SubResource("Animation_jmj87")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_fq4cx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249414, 0)
+shape = SubResource("CapsuleShape3D_da1k2")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+size = 3.917
+
+[node name="character2" parent="." instance=ExtResource("2_epep7")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="character2/Character2" index="0"]
+bones/0/position = Vector3(0, 0.402232, 0)
+bones/0/rotation = Quaternion(0, -2.65707e-09, 0.019524, 0.999809)
+bones/1/rotation = Quaternion(0.0160363, 0.0276461, -0.000557935, 0.999489)
+bones/2/rotation = Quaternion(0.060595, -0.00252979, 0.00395943, 0.998151)
+bones/3/rotation = Quaternion(-0.0500081, -0.273794, -0.879509, 0.386006)
+bones/4/rotation = Quaternion(0.237465, -0.10391, -0.43742, 0.861091)
+bones/5/rotation = Quaternion(0.10318, -0.0931307, 0.92868, 0.343852)
+bones/6/rotation = Quaternion(0.237488, 0.0942632, 0.416751, 0.872372)
+bones/7/rotation = Quaternion(0.84986, -0.131844, -0.46737, 0.204744)
+bones/8/rotation = Quaternion(0.838147, -0.154916, 0.460928, -0.247096)
+bones/9/position = Vector3(0.511132, -0.125962, 0.302648)
+bones/9/rotation = Quaternion(0.876239, 7.78296e-14, -0.481876, -2.96862e-07)
+bones/10/position = Vector3(-0.511132, -0.112205, -0.343918)
+bones/10/rotation = Quaternion(0.876239, -7.78296e-14, 0.481876, -2.96862e-07)
+
+[node name="AnimationPlayer" parent="character2" index="1"]
+autoplay = "Idle2"
+
+[node name="MarkArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarkArea"]
+shape = SubResource("CylinderShape3D_ytpri")
+
+[node name="footstepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qho5w")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="markSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2ng3h")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ufld")
+}
+
+[connection signal="body_entered" from="MarkArea" to="." method="_on_mark_area_body_entered"]
+[connection signal="body_exited" from="MarkArea" to="." method="_on_mark_area_body_exited"]
+
+[editable path="character2"]

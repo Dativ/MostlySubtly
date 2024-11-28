@@ -1,0 +1,364 @@
+[gd_scene load_steps=39 format=3 uid="uid://dd03hwko3wvva"]
+
+[ext_resource type="MeshLibrary" uid="uid://cst8nej1wghdk" path="res://assets/meshes/walls/library/GridMapLibrary.tres" id="1_c1afq"]
+[ext_resource type="PackedScene" uid="uid://tfevty1d1qxi" path="res://assets/Statics/bar.tscn" id="2_xc0w0"]
+[ext_resource type="PackedScene" uid="uid://b6t3e2gao16m7" path="res://assets/Statics/table_food.tscn" id="4_v3328"]
+[ext_resource type="PackedScene" uid="uid://cx0nj8aphfvia" path="res://assets/Statics/table_drink.tscn" id="5_51ui4"]
+[ext_resource type="Theme" uid="uid://cqcjtq2qlj7fd" path="res://game/UI/default_theme.tres" id="9_r0xqc"]
+[ext_resource type="PackedScene" uid="uid://btychf625rrcr" path="res://game/player/player.tscn" id="10_2v1jq"]
+[ext_resource type="Script" path="res://game/mechanics/points_of_interest.gd" id="11_w7uag"]
+[ext_resource type="PackedScene" uid="uid://1kftvpi4ciq0" path="res://game/mechanics/point_of_interest.tscn" id="12_xxcaa"]
+[ext_resource type="PackedScene" uid="uid://v5jvvh37j5d2" path="res://game/suspect/suspect.tscn" id="13_efdfn"]
+[ext_resource type="PackedScene" uid="uid://cm8jyvdk50yi6" path="res://assets/meshes/items/Door.glb" id="13_jkqed"]
+[ext_resource type="Material" uid="uid://djsdb5sr56wyd" path="res://assets/materials/wall.tres" id="14_0ggxa"]
+[ext_resource type="PackedScene" uid="uid://dfijmnej8r66m" path="res://game/mechanics/crowd.tscn" id="14_wqewx"]
+[ext_resource type="Material" uid="uid://b6yaiuurdsdw3" path="res://assets/materials/rim.tres" id="15_hp0r3"]
+[ext_resource type="PackedScene" uid="uid://cp4pl3mayl8b" path="res://game/guard/guard.tscn" id="15_ub0j3"]
+[ext_resource type="PackedScene" uid="uid://bjmid2jd3vajv" path="res://game/mechanics/end_area.tscn" id="16_3yvce"]
+[ext_resource type="Script" path="res://game/mechanics/game_manager.gd" id="17_wl5qb"]
+[ext_resource type="Script" path="res://game/UI/ui.gd" id="18_p4fgr"]
+[ext_resource type="PackedScene" uid="uid://dl850rxcw8mm4" path="res://game/UI/gui.tscn" id="19_0fvx3"]
+[ext_resource type="Texture2D" uid="uid://ou1hdyvnurop" path="res://assets/2d/icons/settings_icon.png" id="20_h0whq"]
+[ext_resource type="AudioStream" uid="uid://d2sljvep0dsac" path="res://assets/sfx/click.wav" id="21_x40e2"]
+[ext_resource type="AudioStream" uid="uid://dwh7nfeybtgr3" path="res://assets/sfx/step.wav" id="22_q82re"]
+[ext_resource type="PackedScene" uid="uid://b3kfi82mp3ik3" path="res://game/UI/settings.tscn" id="23_dqws0"]
+[ext_resource type="PackedScene" uid="uid://eb6cmwyss1cs" path="res://game/UI/spotted_screen.tscn" id="25_6fh0m"]
+[ext_resource type="PackedScene" uid="uid://bhr6v6g0i4kxp" path="res://game/UI/end_level_screen.tscn" id="26_rri21"]
+[ext_resource type="PackedScene" uid="uid://dlebuh0hfh1c1" path="res://game/UI/level_recap.tscn" id="27_mgmx5"]
+[ext_resource type="AudioStream" uid="uid://o6wom6rvqdre" path="res://assets/sfx/song1.wav" id="28_al7me"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4l13d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.188235, 0.188235, 0.188235, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wfso6"]
+sky_material = SubResource("ProceduralSkyMaterial_4l13d")
+
+[sub_resource type="Environment" id="Environment_v23q8"]
+background_mode = 2
+sky = SubResource("Sky_wfso6")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pf2na"]
+vertices = PackedVector3Array(16.75, 0.05, 6.5, 17.5, 0.05, 7.25, 18.25, 0.05, 6.25, 17, 0.05, 5, 12.25, 0.05, 4.5, 12, 0.05, 5.75, 12.25, 0.05, 7.75, 17, 0.05, 4.25, 14.5, 0.05, 3.5, 12.5, 0.05, 3.5, 6.5, 0.05, 7.75, 7.75, 0.05, 7.75, 8, 0.05, 5.75, 6.5, 0.05, 4.5, 16, 0.05, 7.75, 19.5, 0.05, 3.75, 19.25, 0.05, 2.5, 14.5, 0.05, 2.5, 24, 0.05, 3.75, 24.25, 0.05, 4.25, 25.25, 0.05, 4.25, 29.5, 0.05, 2.5, 17.5, 0.05, 7.75, 28, 0.05, 7.75, 24, 0.05, 6.25, 25.5, 0.05, 5.25, 24.25, 0.05, 5.5, 28.25, 0.05, 7, 29.5, 0.05, 6.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(7, 3, 0), PackedInt32Array(4, 9, 8), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(0, 14, 7), PackedInt32Array(7, 14, 8), PackedInt32Array(8, 14, 4), PackedInt32Array(4, 14, 6), PackedInt32Array(8, 17, 7), PackedInt32Array(7, 17, 16), PackedInt32Array(7, 16, 15), PackedInt32Array(5, 12, 4), PackedInt32Array(4, 12, 13), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(1, 2, 22), PackedInt32Array(22, 2, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(26, 25, 24), PackedInt32Array(24, 25, 23), PackedInt32Array(21, 28, 27), PackedInt32Array(15, 16, 18), PackedInt32Array(18, 16, 21), PackedInt32Array(23, 25, 27), PackedInt32Array(27, 25, 20), PackedInt32Array(27, 20, 21)]
+cell_height = 0.05
+agent_radius = 0.25
+agent_max_climb = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gcx1f"]
+size = Vector3(4.01001, 1, 1.9668)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q66tl"]
+size = Vector3(6, 1, 1.9668)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxotf"]
+size = Vector3(24, 1, 1.9668)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f6kqc"]
+viewport_path = NodePath("Others/Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1hd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm65r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4auh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11j0u"]
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v23q8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.05
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pf2na")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_c1afq")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(3, 3, 655366, 3, 2, 7, 4, 2, 1048581, 5, 2, 1048581, 6, 1, 4, 6, 2, 1048579, 6, 3, 1048580, 7, 3, 1048577, 8, 3, 1048585, 8, 2, 655361, 8, 1, 1441800, 7, 1, 1441793, 7, 2, 0, 9, 1, 1048581, 10, 1, 1048581, 11, 1, 1048581, 9, 3, 1048581, 10, 3, 1048581, 11, 3, 1048581, 12, 1, 1441801, 12, 2, 1, 12, 3, 1048584, 13, 3, 1048577, 14, 3, 655364, 14, 2, 655361, 14, 1, 1441796, 13, 1, 1441793, 13, 2, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Staticts" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Bar" parent="NavigationRegion3D/Staticts" instance=ExtResource("2_xc0w0")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 13.3512, 0, 2.97174)
+
+[node name="TablesFood" type="Node3D" parent="NavigationRegion3D/Staticts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4966, 0, 4.98787)
+
+[node name="TableFood" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09056, 0, 2.49951)
+
+[node name="TableFood2" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49249, 0, 2.49951)
+
+[node name="TableFood3" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4157, 0, -0.105106)
+
+[node name="TableFood4" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0403, 0, -0.105106)
+
+[node name="TableFood5" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7897, 0, 2.3645)
+
+[node name="TableFood6" parent="NavigationRegion3D/Staticts/TablesFood" instance=ExtResource("4_v3328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3275, 0, 2.42408)
+
+[node name="TableDrink" type="Node3D" parent="NavigationRegion3D/Staticts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2683, 0, 5.23771)
+
+[node name="Table" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_51ui4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5067, 0, 1.9274)
+
+[node name="Table2" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_51ui4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1946, 0, 2.18322)
+
+[node name="Table3" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_51ui4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38239, 0, -0.747294)
+
+[node name="Table4" parent="NavigationRegion3D/Staticts/TableDrink" instance=ExtResource("5_51ui4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37934, 0, -0.346265)
+
+[node name="InvisibleWall" type="Node3D" parent="NavigationRegion3D/Staticts"]
+
+[node name="Wall1" type="StaticBody3D" parent="NavigationRegion3D/Staticts/InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Staticts/InvisibleWall/Wall1"]
+shape = SubResource("BoxShape3D_gcx1f")
+
+[node name="Wall2" type="StaticBody3D" parent="NavigationRegion3D/Staticts/InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Staticts/InvisibleWall/Wall2"]
+shape = SubResource("BoxShape3D_q66tl")
+
+[node name="Wall3" type="StaticBody3D" parent="NavigationRegion3D/Staticts/InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Staticts/InvisibleWall/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_lxotf")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("10_2v1jq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9066, 0, 7.16018)
+
+[node name="PointsOfInterest" type="Node3D" parent="." groups=["PointsOfInterest"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3477, 0, 5.14101)
+script = ExtResource("11_w7uag")
+
+[node name="Bar" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32753, 0, -1.51462)
+
+[node name="Crowd" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58355, 0, 0.626625)
+type = 1
+
+[node name="Painting" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56243, 0, -2.33705)
+type = 3
+
+[node name="Painting2" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.970102, 0, -2.41496)
+type = 3
+
+[node name="Painting3" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1261, 0, -2.31927)
+type = 3
+
+[node name="Painting4" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88146, 0, 2.3919)
+type = 3
+
+[node name="Painting5" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.83, 0, 1.10507)
+type = 3
+
+[node name="Painting6" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90191, 0, -0.0839257)
+type = 3
+
+[node name="Painting7" parent="PointsOfInterest" instance=ExtResource("12_xxcaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0019, 0, -0.0237637)
+type = 3
+
+[node name="Suspects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9908, 0, 4.82585)
+
+[node name="Subject" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97056, 0, -1.61614)
+
+[node name="Subject2" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83849, 0, -0.321778)
+
+[node name="Subject3" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.628437, 0, 2.16182)
+
+[node name="Subject4" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1971, 0, 2.31912)
+
+[node name="Subject5" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33746, 0, 2.2309)
+
+[node name="Subject6" parent="Suspects" instance=ExtResource("13_efdfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11686, 0, -1.68868)
+
+[node name="Crowds" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.23, 0, 5.15225)
+
+[node name="Crowd" parent="Crowds" instance=ExtResource("14_wqewx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79103, 0, 1.57637)
+
+[node name="Crowd2" parent="Crowds" instance=ExtResource("14_wqewx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6876, 0, 0.929861)
+clue_index = 1
+
+[node name="Crowd3" parent="Crowds" instance=ExtResource("14_wqewx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6312, 0, -2.16252)
+clue_index = 2
+
+[node name="Crowd4" parent="Crowds" instance=ExtResource("14_wqewx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542079, 0, -2.2187)
+clue_index = 3
+
+[node name="Crowd5" parent="Crowds" instance=ExtResource("14_wqewx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7325, 0, -0.382713)
+clue_index = 4
+
+[node name="Guards" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0249, 0, 4.72933)
+
+[node name="Guard" parent="Guards" instance=ExtResource("15_ub0j3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.805203, 0, 0)
+
+[node name="Guard2" parent="Guards" instance=ExtResource("15_ub0j3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0636, 0, -0.706977)
+
+[node name="Guard3" parent="Guards" instance=ExtResource("15_ub0j3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60013, 0, -1.94076)
+
+[node name="Others" type="Node3D" parent="."]
+
+[node name="EndArea" parent="Others" node_paths=PackedStringArray("level_recap") instance=ExtResource("16_3yvce")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 0.245333, 7.25068)
+level_recap = NodePath("../../UI/LevelRecap")
+
+[node name="Sprite3D" type="Sprite3D" parent="Others"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.01901, 0.0120611, 7.29462)
+modulate = Color(0.380392, 0, 0, 1)
+texture = SubResource("ViewportTexture_f6kqc")
+
+[node name="SubViewport" type="SubViewport" parent="Others/Sprite3D"]
+transparent_bg = true
+size = Vector2i(175, 40)
+
+[node name="Label" type="Label" parent="Others/Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_r0xqc")
+text = "Entry/Exit"
+
+[node name="Doors" type="Node3D" parent="Others"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7.9)
+
+[node name="Door" parent="Others/Doors" instance=ExtResource("13_jkqed")]
+
+[node name="Door" parent="Others/Doors/Door" index="0"]
+surface_material_override/0 = ExtResource("14_0ggxa")
+
+[node name="DoorFrame" parent="Others/Doors/Door/Door" index="0"]
+surface_material_override/0 = ExtResource("15_hp0r3")
+
+[node name="DoorKnob" parent="Others/Doors/Door/Door" index="1"]
+surface_material_override/0 = ExtResource("15_hp0r3")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("suspects_slot", "crowds_slot", "guards_slot", "gui", "spotted_screen", "player", "end_area")]
+script = ExtResource("17_wl5qb")
+suspects_slot = NodePath("../Suspects")
+crowds_slot = NodePath("../Crowds")
+guards_slot = NodePath("../Guards")
+gui = NodePath("../UI/ClueGui")
+spotted_screen = NodePath("../UI/SpottedScreen")
+player = NodePath("../Player")
+end_area = NodePath("../Others/EndArea")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_p4fgr")
+
+[node name="ClueGui" parent="UI" instance=ExtResource("19_0fvx3")]
+layout_mode = 1
+
+[node name="SettingButton" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="UI/SettingButton"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g1hd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jm65r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e4auh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_11j0u")
+icon = ExtResource("20_h0whq")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="UI/SettingButton/Button"]
+stream = ExtResource("21_x40e2")
+volume_db = -20.0
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="UI/SettingButton/Button"]
+stream = ExtResource("22_q82re")
+
+[node name="Settings" parent="UI" instance=ExtResource("23_dqws0")]
+visible = false
+layout_mode = 1
+
+[node name="SpottedScreen" parent="UI" instance=ExtResource("25_6fh0m")]
+visible = false
+layout_mode = 1
+
+[node name="EndLevelScreen" parent="UI" instance=ExtResource("26_rri21")]
+layout_mode = 1
+
+[node name="LevelRecap" parent="UI" node_paths=PackedStringArray("game_manager") instance=ExtResource("27_mgmx5")]
+visible = false
+layout_mode = 1
+game_manager = NodePath("../../GameManager")
+
+[node name="BackgroundMusic" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundMusic"]
+stream = ExtResource("28_al7me")
+autoplay = true
+bus = &"Music"
+
+[connection signal="mouse_entered" from="UI/SettingButton/Button" to="UI" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="UI/SettingButton/Button" to="UI" method="_on_button_pressed"]
+
+[editable path="Others/Doors/Door"]

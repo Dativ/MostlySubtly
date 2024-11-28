@@ -1,0 +1,143 @@
+[gd_scene load_steps=19 format=3 uid="uid://v5jvvh37j5d2"]
+
+[ext_resource type="Script" path="res://game/suspect/suspect.gd" id="1_7ifq6"]
+[ext_resource type="PackedScene" uid="uid://if6kp3tof0qe" path="res://game/suspect/npc.tscn" id="1_yq8jy"]
+[ext_resource type="PackedScene" uid="uid://b2857ohvecp36" path="res://assets/meshes/cloths/Hat1.glb" id="3_wgjae"]
+[ext_resource type="Material" uid="uid://dh72qiv4vvog7" path="res://assets/materials/black.tres" id="4_03vjr"]
+[ext_resource type="PackedScene" uid="uid://bt5egyeronb6m" path="res://assets/meshes/cloths/Hat2.glb" id="4_emcsm"]
+[ext_resource type="Script" path="res://game/suspect/States/idle.gd" id="4_m26i2"]
+[ext_resource type="PackedScene" uid="uid://bgjkehh8swxw7" path="res://assets/meshes/cloths/Mask1.glb" id="5_5e74g"]
+[ext_resource type="Script" path="res://game/suspect/States/wander.gd" id="5_trsmd"]
+[ext_resource type="PackedScene" uid="uid://de64uy4su4vnr" path="res://assets/meshes/cloths/Mask2.glb" id="6_83f4a"]
+[ext_resource type="PackedScene" uid="uid://dhf6fnquhl8ns" path="res://assets/meshes/cloths/Belt.glb" id="7_fn2gk"]
+[ext_resource type="PackedScene" uid="uid://hr8rb2g6va1r" path="res://assets/meshes/cloths/Boot.glb" id="8_55asi"]
+[ext_resource type="PackedScene" uid="uid://8p40qyemue80" path="res://assets/meshes/cloths/Gloves.glb" id="9_sxp16"]
+[ext_resource type="Material" uid="uid://u5mkgrqute0d" path="res://assets/materials/boots.tres" id="10_jk3q8"]
+[ext_resource type="Material" uid="uid://cm73vg25gj15v" path="res://assets/materials/gloves.tres" id="12_i6vso"]
+[ext_resource type="Texture2D" uid="uid://dhtp4xlvxrfji" path="res://assets/2d/icons/question_icon.png" id="15_8fwm5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g0b8"]
+albedo_color = Color(0, 0.521569, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04u3w"]
+albedo_color = Color(0.833771, 0.384282, 7.70092e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5a1y"]
+albedo_color = Color(0.379345, 0.171093, 2.40654e-08, 1)
+
+[node name="Suspect" instance=ExtResource("1_yq8jy")]
+script = ExtResource("1_7ifq6")
+
+[node name="HatSlot" parent="model/Character2/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11877, 0)
+
+[node name="Hat1" parent="model/Character2/Skeleton3D/HatSlot" index="0" instance=ExtResource("3_wgjae")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.007, 1.6, -0.001)
+visible = false
+
+[node name="Hat1" parent="model/Character2/Skeleton3D/HatSlot/Hat1" index="0"]
+surface_material_override/0 = ExtResource("4_03vjr")
+
+[node name="Hat2" parent="model/Character2/Skeleton3D/HatSlot" index="1" instance=ExtResource("4_emcsm")]
+transform = Transform3D(1, 3.45153e-10, 0, 3.43789e-10, 1, -1.16415e-10, -1.86265e-09, 0, 1, -0.007, 1.6, -0.001)
+visible = false
+
+[node name="Hat2" parent="model/Character2/Skeleton3D/HatSlot/Hat2" index="0"]
+surface_material_override/0 = ExtResource("4_03vjr")
+
+[node name="MaskSlot" parent="model/Character2/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11877, 0)
+
+[node name="Mask1" parent="model/Character2/Skeleton3D/MaskSlot" index="0" instance=ExtResource("5_5e74g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.1)
+visible = false
+
+[node name="Mask1" parent="model/Character2/Skeleton3D/MaskSlot/Mask1" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2g0b8")
+
+[node name="Mask2" parent="model/Character2/Skeleton3D/MaskSlot" index="1" instance=ExtResource("6_83f4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.05)
+visible = false
+
+[node name="Mask2" parent="model/Character2/Skeleton3D/MaskSlot/Mask2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_04u3w")
+
+[node name="BeltSlot" parent="model/Character2/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505408, 0)
+visible = true
+
+[node name="Belt" parent="model/Character2/Skeleton3D/BeltSlot" index="0" instance=ExtResource("7_fn2gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451, -0.05)
+visible = false
+
+[node name="Belt" parent="model/Character2/Skeleton3D/BeltSlot/Belt" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h5a1y")
+
+[node name="LeftBootSlot" parent="model/Character2/Skeleton3D" index="4"]
+transform = Transform3D(0.535591, -1.33294e-13, -0.844478, 1.83102e-13, -1, 2.7397e-13, -0.844478, -3.01362e-13, -0.535591, 0.511132, 0.523716, 4.53133e-08)
+
+[node name="Boot" parent="model/Character2/Skeleton3D/LeftBootSlot" index="0" instance=ExtResource("8_55asi")]
+transform = Transform3D(-1, 8.74227e-08, -5.96046e-08, -8.74228e-08, -0.999999, -1.35525e-20, 0, 7.10543e-15, 1, 0, 0.546817, 0)
+visible = false
+
+[node name="Boot" parent="model/Character2/Skeleton3D/LeftBootSlot/Boot" index="0"]
+surface_material_override/0 = ExtResource("10_jk3q8")
+
+[node name="RightBootSlot" parent="model/Character2/Skeleton3D" index="5"]
+transform = Transform3D(0.535591, 1.33294e-13, 0.844478, -1.83102e-13, -1, 2.7397e-13, 0.844478, -3.01362e-13, -0.535591, -0.511132, 0.523716, 4.53133e-08)
+
+[node name="Boot" parent="model/Character2/Skeleton3D/RightBootSlot" index="0" instance=ExtResource("8_55asi")]
+transform = Transform3D(-1, 5.96046e-08, -1.49012e-08, -8.9407e-08, -1, -3.72529e-09, 1.49012e-08, 0, 1, 0, 0.547, 0)
+visible = false
+
+[node name="Boot" parent="model/Character2/Skeleton3D/RightBootSlot/Boot" index="0"]
+surface_material_override/0 = ExtResource("10_jk3q8")
+
+[node name="LeftGloveSlot" parent="model/Character2/Skeleton3D" index="6"]
+transform = Transform3D(-0.974287, -0.212052, -0.0761528, 0.127248, -0.796786, 0.590711, -0.185939, 0.565832, 0.803282, 1.05137, 1.38016, 0.077692)
+
+[node name="Gloves" parent="model/Character2/Skeleton3D/LeftGloveSlot" index="0" instance=ExtResource("9_sxp16")]
+transform = Transform3D(1, -1.3411e-07, -1.49012e-07, -1.19209e-07, -1, 0, -8.9407e-08, -5.96046e-08, -1, -0.018, 0.587, 0.28)
+visible = false
+
+[node name="Gloves" parent="model/Character2/Skeleton3D/LeftGloveSlot/Gloves" index="0"]
+surface_material_override/0 = ExtResource("12_i6vso")
+
+[node name="RightGloveSlot" parent="model/Character2/Skeleton3D" index="7"]
+transform = Transform3D(-0.972584, 0.222204, 0.068607, -0.139672, -0.794015, 0.591635, 0.185939, 0.565832, 0.803282, -1.03168, 1.36148, 0.077692)
+
+[node name="Gloves" parent="model/Character2/Skeleton3D/RightGloveSlot" index="0" instance=ExtResource("9_sxp16")]
+transform = Transform3D(0.999999, -1.49012e-08, 6.70552e-08, -8.9407e-08, -1, 2.98023e-07, 1.3411e-07, -8.9407e-08, -1, 0.025, 0.58, 0.28)
+visible = false
+
+[node name="Gloves" parent="model/Character2/Skeleton3D/RightGloveSlot/Gloves" index="0"]
+surface_material_override/0 = ExtResource("12_i6vso")
+
+[node name="NavigationAgent" parent="." index="2"]
+path_postprocessing = 1
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("4_m26i2")
+
+[node name="Wander" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("5_trsmd")
+
+[node name="MarkIcon" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.707539, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("15_8fwm5")
+
+[connection signal="velocity_computed" from="NavigationAgent" to="StateMachine/Wander" method="_on_nav_velocity_computed"]
+
+[editable path="model"]
+[editable path="model/Character2/Skeleton3D/HatSlot/Hat1"]
+[editable path="model/Character2/Skeleton3D/HatSlot/Hat2"]
+[editable path="model/Character2/Skeleton3D/MaskSlot/Mask1"]
+[editable path="model/Character2/Skeleton3D/MaskSlot/Mask2"]
+[editable path="model/Character2/Skeleton3D/BeltSlot/Belt"]
+[editable path="model/Character2/Skeleton3D/LeftBootSlot/Boot"]
+[editable path="model/Character2/Skeleton3D/RightBootSlot/Boot"]
+[editable path="model/Character2/Skeleton3D/LeftGloveSlot/Gloves"]
+[editable path="model/Character2/Skeleton3D/RightGloveSlot/Gloves"]

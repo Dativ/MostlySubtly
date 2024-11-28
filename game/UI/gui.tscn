@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl850rxcw8mm4"]
+
+[ext_resource type="Theme" uid="uid://cqcjtq2qlj7fd" path="res://game/UI/default_theme.tres" id="1_ucbrt"]
+[ext_resource type="Script" path="res://game/UI/clue_container.gd" id="2_yjyy1"]
+[ext_resource type="Script" path="res://game/UI/clue_effect.gd" id="3_fj1yx"]
+
+[node name="ClueGui" type="Control" node_paths=PackedStringArray("clue_effect")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ucbrt")
+script = ExtResource("2_yjyy1")
+clue_effect = NodePath("ClueEffect2")
+
+[node name="ClueContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 93.0
+theme = ExtResource("1_ucbrt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueContainer"]
+layout_mode = 2
+
+[node name="ClueHeader" type="Label" parent="ClueContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Clues:"
+
+[node name="ClueList" type="VBoxContainer" parent="ClueContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ClueEffect2" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.368056
+anchor_top = 0.469907
+anchor_right = 0.631944
+anchor_bottom = 0.530093
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fj1yx")
+metadata/_edit_use_anchors_ = true
+
+[node name="SupportText1" type="Label" parent="ClueEffect2"]
+layout_mode = 2
+text = "Blablabla "
+
+[node name="ClueText" type="Label" parent="ClueEffect2"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "  Ololol"
+
+[node name="SupportText2" type="Label" parent="ClueEffect2"]
+layout_mode = 2
+text = "a."
+
+[node name="LeaveAreaContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="Label" type="Label" parent="LeaveAreaContainer"]
+layout_mode = 2
+text = "Leave area"
