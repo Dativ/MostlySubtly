@@ -115,6 +115,8 @@ surface_material_override/0 = ExtResource("12_i6vso")
 
 [node name="NavigationAgent" parent="." index="2"]
 path_postprocessing = 1
+radius = 0.15
+neighbor_distance = 1.0
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Idle" type="Node" parent="StateMachine" index="0"]

@@ -18,14 +18,12 @@
 [node name="GridMapLibrary" type="Node3D"]
 
 [node name="Floor2" parent="." instance=ExtResource("1_3063k")]
-visible = false
 
 [node name="Floor" parent="Floor2" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
 surface_material_override/1 = ExtResource("5_idewp")
 
 [node name="Wall2" parent="." instance=ExtResource("2_g4qdh")]
-visible = false
 
 [node name="Wall" parent="Wall2" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -34,7 +32,6 @@ surface_material_override/2 = ExtResource("5_idewp")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallColumn12" parent="." instance=ExtResource("3_phs6n")]
-visible = false
 
 [node name="WallColumn1" parent="WallColumn12" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -43,7 +40,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallColumn22" parent="." instance=ExtResource("4_kpjc4")]
-visible = false
 
 [node name="WallColumn2" parent="WallColumn22" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -52,7 +48,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallCorner2" parent="." instance=ExtResource("5_ib3hx")]
-visible = false
 
 [node name="WallCorner" parent="WallCorner2" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -61,7 +56,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallCorridor2" parent="." instance=ExtResource("6_7u8ik")]
-visible = false
 
 [node name="WallCorridor" parent="WallCorridor2" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -70,7 +64,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallDeadEnd2" parent="." instance=ExtResource("7_ttdir")]
-visible = false
 
 [node name="WallDeadEnd" parent="WallDeadEnd2" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -79,7 +72,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallCornerwC12" parent="." instance=ExtResource("12_48nkb")]
-visible = false
 
 [node name="WallCornerwC1" parent="WallCornerwC12" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")
@@ -88,7 +80,6 @@ surface_material_override/2 = ExtResource("4_w84ud")
 surface_material_override/3 = ExtResource("6_q1i1w")
 
 [node name="WallwC12" parent="." instance=ExtResource("13_iq2wx")]
-visible = false
 
 [node name="WallwC1" parent="WallwC12" index="0"]
 surface_material_override/0 = ExtResource("3_ydbc2")

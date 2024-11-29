@@ -50,6 +50,11 @@ transform = Transform3D(-0.241412, 0.768498, -0.592562, -0.820977, -0.487312, -0
 [node name="RightGloveSlot" parent="model/Character2/Skeleton3D" index="7"]
 transform = Transform3D(-0.657275, -0.667176, 0.350522, 0.734417, -0.462607, 0.496615, -0.169175, 0.583842, 0.794045, -1.23168, 1.4186, -0.291811)
 
+[node name="NavigationAgent" parent="." index="2"]
+path_postprocessing = 1
+radius = 0.15
+neighbor_distance = 1.0
+
 [node name="Wander" type="Node" parent="StateMachine" index="0"]
 script = ExtResource("2_ek1dl")
 

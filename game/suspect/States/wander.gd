@@ -35,6 +35,7 @@ func physics_update(delta: float) -> void:
 
 
 func _on_nav_velocity_computed(safe_velocity: Vector3) -> void:
+	character.rotation.y = lerp(character.rotation.y, atan2(safe_velocity.x,safe_velocity.z), 0.05)
 	character.velocity = safe_velocity
-	character.rotation.y = atan2(safe_velocity.x,safe_velocity.z)
+	
 	
